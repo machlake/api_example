@@ -17,7 +17,7 @@
 > 1. DeleteCalculated
 
 > ## 지원 Language
-> 1. shell script(예정)
+> 1. script(예정)
 > 1. nodejs(예정)
 > 1. python(예정)
 > 1. java(예정)
