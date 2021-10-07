@@ -2,47 +2,62 @@ chcp 65001
 :: Text Encoding to UTF-8 in CMD
 :: Example For Get Tag List API by using curl in window script
 :: written by yeony kim
-:: Lake가 모두 만들어진 상태에서 Lake의 TagSchema(Tag meta) 와 ValueSchema(Value)의 설정값을 모두 알고
-:: sensor1과 sensor2가 tag로 등록된 것을 알고 있는 상태
+:: sensor1, sensor2 is applied in lake
+
+set API_KEY=
 
 set CONTENT_HEADER="Content-Type: application/json"
-set API_HEADER="x-api-key: zTI-Drfk76e3adxwEoweqiOkupF8LN0V6QCq8nTXlrlDT2zDHx9Vz8nVX14_2y5IhWzydKv-CaMBuCM6UasX1myX19ki4dJr38NYd2k6juYf9"
+set API_HEADER="x-api-key: %API_KEY%"
 set LAKE_ID=c5ehcdmcb0jc72ia6pug
+set URL=https://%LAKE_ID%.machlake.com/lakes/tags
 
-set TAG_NAME=
+:: ------------------------------------------------------------------------------------------------- ::
+
+:: CASE - Select Tag
+
+set TAG_NAME=sensor
 set QUERY_LIMIT=
 set QUERY_OFFSET=
 
-set URL="https://%LAKE_ID%.machlake.com/lakes/tags?name=%TAG_NAME%&limit=%QUERY_LIMIT%&offset=%QUERY_OFFSET%"
-curl -k -X GET %URL% -H %CONTENT_HEADER% -H %API_HEADER%
 
-:: Return Format
+curl -k -G %URL% -H %CONTENT_HEADER% -H %API_HEADER% --data-urlencode "name=%TAG_NAME%" --data-urlencode "limit=%QUERY_LIMIT%" --data-urlencode "offset=%QUERY_OFFSET%"
+
+:: Return Format / Example For 
 :: {"data":{"tag":[{"name":"sensor1"},{"name":"sensor2"}]},"status":"success"}
+
+:: ------------------------------------------------------------------------------------------------- ::
+
+:: CASE - Select Tag with SQL Limit
 
 set QUERY_LIMIT=1
 set QUERY_OFFSET=
 
-set URL="https://%LAKE_ID%.machlake.com/lakes/tags?name=%TAG_NAME%&limit=%QUERY_LIMIT%&offset=%QUERY_OFFSET%"
-curl -k -X GET %URL% -H %CONTENT_HEADER% -H %API_HEADER%
+curl -k -G %URL% -H %CONTENT_HEADER% -H %API_HEADER% --data-urlencode "name=%TAG_NAME%" --data-urlencode "limit=%QUERY_LIMIT%" --data-urlencode "offset=%QUERY_OFFSET%"
 
 :: Return Format
 :: {"data":{"tag":[{"name":"sensor1"}]},"status":"success"}
 
+:: ------------------------------------------------------------------------------------------------- ::
+
+:: CASE - Select Tag with SQL Limit and SQL Offset
+
 set QUERY_LIMIT=1
 set QUERY_OFFSET=1
 
-set URL="https://%LAKE_ID%.machlake.com/lakes/tags?name=%TAG_NAME%&limit=%QUERY_LIMIT%&offset=%QUERY_OFFSET%"
-curl -k -X GET %URL% -H %CONTENT_HEADER% -H %API_HEADER%
+curl -k -G %URL% -H %CONTENT_HEADER% -H %API_HEADER% --data-urlencode "name=%TAG_NAME%" --data-urlencode "limit=%QUERY_LIMIT%" --data-urlencode "offset=%QUERY_OFFSET%"
 
 :: Return Format
 :: {"data":{"tag":[{"name":"sensor2"}]},"status":"success"}
+
+:: ------------------------------------------------------------------------------------------------- ::
+
+:: CASE - Select Tag about not exist
 
 set TAG_NAME=OTHER_NAME
 set QUERY_LIMIT=
 set QUERY_OFFSET=
 
-set URL="https://%LAKE_ID%.machlake.com/lakes/tags?name=%TAG_NAME%&limit=%QUERY_LIMIT%&offset=%QUERY_OFFSET%"
-curl -k -X GET %URL% -H %CONTENT_HEADER% -H %API_HEADER%
+curl -k -G %URL% -H %CONTENT_HEADER% -H %API_HEADER% --data-urlencode "name=%TAG_NAME%" --data-urlencode "limit=%QUERY_LIMIT%" --data-urlencode "offset=%QUERY_OFFSET%"
 
 :: Return Format
 :: {"data":{"tag":[]},"status":"success"}

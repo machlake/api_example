@@ -2,24 +2,30 @@ chcp 65001
 :: Text Encoding to UTF-8 in CMD
 :: Example For Get Tag View API by using curl in window script
 :: written by yeony kim
-:: Lake가 모두 만들어진 상태에서 Lake의 TagSchema(Tag meta) 와 ValueSchema(Value)의 설정값을 모두 알고
-:: sensor1과 sensor2가 tag로 등록된 것을 알고 있는 상태
+:: sensor1, sensor2 is applied in lake
+
+set API_KEY=
 
 set CONTENT_HEADER="Content-Type: application/json"
-set API_HEADER="x-api-key: zTI-Drfk76e3adxwEoweqiOkupF8LN0V6QCq8nTXlrlDT2zDHx9Vz8nVX14_2y5IhWzydKv-CaMBuCM6UasX1myX19ki4dJr38NYd2k6juYf9"
+set API_HEADER="x-api-key: %API_KEY%"
 set LAKE_ID=c5ehcdmcb0jc72ia6pug
+set URL=https://%LAKE_ID%.machlake.com/lakes/tag
+
+:: ------------------------------------------------------------------------------------------------- ::
+
+:: CASE - Get Tag Information
 
 set TAG_NAME=sensor
 
-set URL=https://%LAKE_ID%.machlake.com/lakes/tag?name=%TAG_NAME%
-curl -k -X GET %URL% -H %CONTENT_HEADER% -H %API_HEADER%
+curl -k -G %URL% -H %CONTENT_HEADER% -H %API_HEADER% --data-urlencode "name=%TAG_NAME%"
 
-:: Return Format / tag name이 match 되는 것이 없는 예제
+:: Return Format / not exist tag name in lake
 :: {"message":"no such name : sensor","status":"error"}
 
 set TAG_NAME=sensor1
 
-set URL=https://%LAKE_ID%.machlake.com/lakes/tag?name=%TAG_NAME%
-curl -k -X GET %URL% -H %CONTENT_HEADER% -H %API_HEADER%
+curl -k -G %URL% -H %CONTENT_HEADER% -H %API_HEADER% --data-urlencode "name=%TAG_NAME%"
 :: Return Format
 :: {"data":{"name":"sensor1"},"status":"success"}
+
+:: ------------------------------------------------------------------------------------------------- ::
