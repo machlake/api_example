@@ -29,7 +29,7 @@ curl -k -X PUT $URL -H $CONTENT_HEADER -H $API_HEADER  -d "{\"name\": \"$SRC_TAG
 curl -k -X PUT $URL -H $CONTENT_HEADER -H $API_HEADER  -d "{\"name\": \"$SRC_TAG_NAME\", \"columns\": [{\"col_name\": \"name\", \"value\": \"$TAR_TAG_NAME\"}]}"
 
 # Return Format / SRC_TAG_NAME이 존재 하지 않는 경우 예시
-# {"data":{"name":"sensor10"},"status":"success"}
+# {"message":"no such name : sensor1","status":"error"}
 
 # ------------------------------------------------------------------------------------------------- #
 
