@@ -6,7 +6,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED ="0";
 
 const express = require('express');
 const app = express();
-const API_KEY ="E35Bx97pfmCuOx14B825JyrtolHhEEGxCxCj2fRBk6CiDy5-uLnL6gTOeP-Nl8RcQvdO044jyc610SPhM-Fnv6J0Gj2wlPsfgqJwJEO8efYa0";
+const API_KEY ="YOUR_API_TOKEN";
 const LAKE_ID ="c5ehcdmcb0jc72ia6pug"
 const URL ="https://" + LAKE_ID +".machlake.com/lakes/values/pivoted";
 
