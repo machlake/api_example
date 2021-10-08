@@ -41,7 +41,7 @@ app.get(
     '/get_tag_list_with_name_limit', function(req, res) {
         const QueryParams = new URLSearchParams()
 
-        QueryParams.set("name", "sensor1")
+        QueryParams.set("name", "sensor")
         QueryParams.set("limit", 1)
         var request = require('request');
         var option = {
@@ -67,7 +67,7 @@ app.get(
     '/get_tag_list_with_name_limit_offset', function(req, res) {
         const QueryParams = new URLSearchParams()
 
-        QueryParams.set("name", "sensor1")
+        QueryParams.set("name", "sensor")
         QueryParams.set("limit", 1)
         QueryParams.set("offset", 1)
         var request = require('request');
