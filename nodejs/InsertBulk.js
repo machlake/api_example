@@ -1,4 +1,4 @@
-// Example For Insert Bulk Data for tag API by using curl in nodejs
+// Example For Insert Bulk Data for tag API by using request in nodejs
 // written by yeony kim
 // sensor1, sensor2 is applied in lake
 

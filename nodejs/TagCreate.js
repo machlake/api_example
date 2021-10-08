@@ -1,4 +1,4 @@
-// Example For Create Tag API by using curl in nodejs
+// Example For Create Tag API by using request in nodejs
 // written by yeony kim
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
