@@ -1,5 +1,5 @@
 # Text Encoding to UTF-8 in CMD
-# Example For Select Data by Time Range for tag API by using curl in window script
+# Example For Select Data by Time Range for tag API by using curl in ubuntu
 # written by yeony kim
 
 API_KEY=

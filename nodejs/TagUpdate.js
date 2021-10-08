@@ -1,4 +1,4 @@
-// Example For Update Tag API by using curl in window script
+// Example For Update Tag API by using curl in nodejs
 // written by yeony kim
 // sensor1, sensor2 is applied in lake
 

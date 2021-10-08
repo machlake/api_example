@@ -1,5 +1,5 @@
 # Text Encoding to UTF-8 in CMD
-# Example For Get Tag View API by using curl in window script
+# Example For Get Tag View API by using curl in ubuntu
 # written by yeony kim
 # sensor1, sensor2 is applied in lake
 
