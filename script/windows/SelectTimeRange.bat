@@ -24,7 +24,7 @@ curl -k -G %URL% -H %CONTENT_HEADER% -H %API_HEADER% --data-urlencode "tag_name=
 :: ------------------------------------------------------------------------------------------------- ::
 :: ------------------------------------------------------------------------------------------------- ::
 
-:: CASE - Current DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn
+:: CASE - Current DATA GET with date format nanosecond timestamp
 set TAG_NAME=sensor1,sensor2
 set DATE_FORMAT=NANOSECOND
 
