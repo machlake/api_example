@@ -11,7 +11,7 @@ URL=https://$LAKE_ID.machlake.com/lakes/values/pivoted
 
 # ------------------------------------------------------------------------------------------------- #
 
-# CASE - Current DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn
+# CASE - Pivoted DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn
 TAG_NAME=sensor1,sensor2
 CALC_MODE=min
 DATE_FORMAT="YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn"
@@ -25,7 +25,7 @@ curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER --data-urlencode "tag_name=$TA
 
 # ------------------------------------------------------------------------------------------------- #
 
-# CASE - Current DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn
+# CASE - Pivoted DATA GET with another value form
 VALUE_RETURN_FORM=1
 CALC_MODE=cnt
 

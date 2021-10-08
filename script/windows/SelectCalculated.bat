@@ -12,7 +12,7 @@ set URL="https://%LAKE_ID%.machlake.com/lakes/values/calculated"
 
 :: ------------------------------------------------------------------------------------------------- ::
 
-:: CASE - Current DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn
+:: CASE - Calculated DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn with calc_mode=min
 set TAG_NAME=sensor1,sensor2
 set CALC_MODE=min
 set DATE_FORMAT=YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn
@@ -26,7 +26,7 @@ curl -k -G %URL% -H %CONTENT_HEADER% -H %API_HEADER% --data-urlencode "tag_name=
 
 :: ------------------------------------------------------------------------------------------------- ::
 
-:: CASE - Current DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn
+:: CASE - Calculated DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn with calc_mode=max and interval_value=3
 set TAG_NAME=sensor1,sensor2
 set CALC_MODE=max
 set DATE_FORMAT=YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn
@@ -41,7 +41,7 @@ curl -k -G %URL% -H %CONTENT_HEADER% -H %API_HEADER% --data-urlencode "tag_name=
 
 :: ------------------------------------------------------------------------------------------------- ::
 
-:: CASE - Current DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn
+:: CASE - Calculated DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn with calc_mode=min and interval_type=m and interval_value=90
 set TAG_NAME=sensor1,sensor2
 set CALC_MODE=cnt
 set DATE_FORMAT=YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn
