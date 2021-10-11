@@ -44,7 +44,6 @@ app.get(
 app.get(
     '/insert_bulk_with_nano_timestamp', function(req, res) {
         const Data = {
-            date_format: 'YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn',
             values: [["sensor1", 1609930804000000000, 2.0], ["sensor1", 1609930805000000000, 2.5], ["sensor1", 1609930806000000000, 2.0], ["sensor2", 1609930804000000000, 2.0], ["sensor2", 1609930805000000000, 2.5], ["sensor2", 1609930806000000000, 2.0]]
         }
         var request = require('request');
