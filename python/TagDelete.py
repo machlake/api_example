@@ -6,7 +6,7 @@ sensor1, sensor2 is applied in lake
 
 import requests
 
-API_KEY = "YOUR_API_KEY"
+API_KEY = "YOUR_API_TOKEN"
 LAKE_ID = "c5ehcdmcb0jc72ia6pug"
 URL = f"https://{LAKE_ID}.machlake.com/lakes/tags"
 headers = {
