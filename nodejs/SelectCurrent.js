@@ -40,7 +40,7 @@ app.get(
     }
 )
 
-// CASE - Pivoted DATA GET with another value form
+// CASE - Current DATA GET with another value form
 
 app.get(
     '/select_current_date_with_nano_time_date_string_another_form', function(req, res) {
