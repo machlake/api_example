@@ -6,7 +6,7 @@ API_KEY=
 
 CONTENT_HEADER=Content-Type:application/json
 API_HEADER=x-api-key:$API_KEY
-LAKE_ID=c5ehcdmcb0jc72ia6pug
+LAKE_ID=YOUR_LAKE_ID
 URL="https://$LAKE_ID.machlake.com/lakes/values/calculated"
 
 # ------------------------------------------------------------------------------------------------- #

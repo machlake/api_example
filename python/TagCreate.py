@@ -7,7 +7,7 @@ sensor1, sensor2 is applied in lake
 import requests
 
 API_KEY = "YOUR_API_TOKEN"
-LAKE_ID = "c5ehcdmcb0jc72ia6pug"
+LAKE_ID = "YOUR_LAKE_ID"
 URL = f"https://{LAKE_ID}.machlake.com/lakes/tags"
 
 # CASE - create TAG / tag duplicate error

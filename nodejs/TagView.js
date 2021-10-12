@@ -7,7 +7,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const express = require('express');
 const app = express();
 const API_KEY = "YOUR_API_TOKEN";
-const LAKE_ID = "c5ehcdmcb0jc72ia6pug"
+const LAKE_ID = "YOUR_LAKE_ID"
 const URL = "https://" + LAKE_ID + ".machlake.com/lakes/tag";
 
 // CASE - Get Tag Information

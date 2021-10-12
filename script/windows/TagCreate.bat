@@ -7,7 +7,7 @@ set API_KEY=
 
 set CONTENT_HEADER="Content-Type: application/json"
 set API_HEADER="x-api-key: %API_KEY%"
-set LAKE_ID=c5ehcdmcb0jc72ia6pug
+set LAKE_ID=YOUR_LAKE_ID
 
 set URL=https://%LAKE_ID%.machlake.com/lakes/tags
 
