@@ -6,7 +6,7 @@ sensor1, sensor2 is applied in lake
 
 import requests
 
-API_KEY = "JUvfqraYevPN8wh1NhhFVLoPFAItliOGFyoyUax8Go3PrnUs5-uSo5-vM2f5LvdgXQe_rxxTjlvA02nOWf1-HmwMUfqdu2m1fyeAoXP_ol081"
+API_KEY = "YOUR_API_TOKEN"
 LAKE_ID = "c5ehcdmcb0jc72ia6pug"
 URL = f"https://{LAKE_ID}.machlake.com/lakes/values/standard"
 
