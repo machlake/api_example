@@ -25,10 +25,10 @@ curl -k -X POST %URL% -H %CONTENT_HEADER% -H %API_HEADER%  -d "{\"tag_name\": \"
 
 :: ------------------------------------------------------------------------------------------------- ::
 
-:: CASE - Insert Data with date time string format but data format in data is nano date time string
+:: CASE - Insert Data with time format is empty but data format in data is nano date time string
 
 set TAG_NAME=sensor1
-set DATE_FORMAT=\"YYYY-MM-DD HH24:MI:SS\"
+set DATE_FORMAT=\"\"
 set VALUES=[[\"2021-01-06 17:00:00 004:000:000\", 1.0], [\"2021-01-06 17:00:00 005:000:000\", 1.5], [\"2021-01-06 17:00:00 006:000:000\", 2.0]]
 
 curl -k -X POST %URL% -H %CONTENT_HEADER% -H %API_HEADER%  -d "{\"tag_name\": \"%TAG_NAME%\", \"date_format\": %DATE_FORMAT%, \"values\": %VALUES%}"
@@ -38,10 +38,10 @@ curl -k -X POST %URL% -H %CONTENT_HEADER% -H %API_HEADER%  -d "{\"tag_name\": \"
 
 :: ------------------------------------------------------------------------------------------------- ::
 
-:: CASE - Insert Data with utc-0 time zone and date time string format but data format in data is nano date time string
+:: CASE - Insert Data with utc-0 time zone and time format is empty but data format in data is nano date time string
 
 set TAG_NAME=sensor1
-set DATE_FORMAT=\"YYYY-MM-DD HH24:MI:SS\"
+set DATE_FORMAT=\"\"
 set VALUES=[[\"2021-01-06 8:00:00 007:000:000\", 1.0], [\"2021-01-06 8:00:00 008:000:000\", 1.5], [\"2021-01-06 8:00:00 009:000:000\", 2.0]]
 
 curl -k -X POST %URL% -H "Use-Timezone: Africa/Abidjan" -H %CONTENT_HEADER% -H %API_HEADER%  -d "{\"tag_name\": \"%TAG_NAME%\", \"date_format\": %DATE_FORMAT%, \"values\": %VALUES%}"

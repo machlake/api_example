@@ -33,8 +33,8 @@ print(response.content.decode('utf-8'))  # {"data":{"calc_mode":"raw","columns":
 params = {
     'tag_name': 'sensor1',
     'date_format': 'YYYY-MM-DD HH24:MI:SS',
-    'start_time': '2021-01-06 17:00:00 000:000:000',
-    'end_time': '2021-01-06 21:00:00 000:000:000'
+    'start_time': '2021-01-06 17:00:00',
+    'end_time': '2021-01-06 21:00:00'
 }
 
 response = requests.get(URL, headers=headers,  params=params, verify=False)

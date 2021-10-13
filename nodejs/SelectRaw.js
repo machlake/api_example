@@ -7,7 +7,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED ="0";
 const express = require('express');
 const app = express();
 const API_KEY ="YOUR_API_TOKEN";
-const LAKE_ID ="YOUR_LAKE_ID"
+const LAKE_ID ="YOUR_LAKE_ID";
 const URL ="https://" + LAKE_ID +".machlake.com/lakes/values/raw";
 
 // CASE - DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn
@@ -52,8 +52,8 @@ app.get(
         
         QueryParams.set('tag_name', 'sensor1')
         QueryParams.set('date_format', 'YYYY-MM-DD HH24:MI:SS')
-        QueryParams.set('start_time', '2021-01-06 17:00:00 000:000:000')
-        QueryParams.set('end_time', '2021-01-06 21:00:00 000:000:000')
+        QueryParams.set('start_time', '2021-01-06 17:00:00')
+        QueryParams.set('end_time', '2021-01-06 21:00:00')
 
         var option = {
             url: URL + "?" + QueryParams.toString(),
