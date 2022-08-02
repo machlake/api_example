@@ -1,0 +1,16 @@
+{
+  "name": "sample",
+  "version": "1.0.0",
+  "description": "machlake api sample",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "TagStat": "./bin/StagStat.js"
+  },
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
