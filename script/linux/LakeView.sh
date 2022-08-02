@@ -1,13 +1,11 @@
 # Text Encoding to UTF-8 in CMD
 # Example For Get Lake View API by using curl in shell script
-# written by yeony kim
 
-API_KEY=
+API_KEY=$YOUR_API_KEY
+LAKE_ID=$YOUR_LAKE_ID
 
 CONTENT_HEADER="Content-Type:application/json"
 API_HEADER="x-api-key:$API_KEY"
-LAKE_ID=c5jpaqr95ojs72hmmh90
-
 
 URL=https://api.machlake.com/lakes/$LAKE_ID
 

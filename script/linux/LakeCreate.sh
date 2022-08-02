@@ -1,6 +1,5 @@
 # Text Encoding to UTF-8 in CMD
 # Example For Create Lake API by using curl in shell script
-# written by yeony kim
 
 API_KEY=
 
