@@ -1,27 +1,19 @@
-# Machlake API Example
+# Machlake API Examples
 
-> ## 예제 목록 
-> 1. TagCreate
-> 1. TagList
-> 1. TagView
-> 1. TagUpdate
-> 1. InsertStandard
-> 1. InsertBulk
-> 1. SelectRaw
-> 1. SelectCalculated
-> 1. SelectPivoted
-> 1. SelectCurrent
-> 1. SelectTimeRange
-> 1. DeleteSingle
-> 1. DeleteAll
-> 1. DeleteCalculated
-
-> ## 지원 Language
-> 1. script(예정)
-> 1. nodejs(예정)
-> 1. python(예정)
-> 1. java(예정)
-> 1. PHP(예정)
-> 1. go(예정)
-> 1. Ruby(예정)
-> 1. Swift(예정)
+| API              | curl (*nix)                                               | curl (windows)                                                | javascript                                         | python                                             |
+|------------------|-----------------------------------------------------------|---------------------------------------------------------------|----------------------------------------------------|----------------------------------------------------|
+| TagCreate        | [TagCreate.sh](./script/linux/TagCreate.sh)               | [TagCreate.bat](./script/windows/TagCreate.bat)               | [TagCreate.js](./nodejs/TagCreate.js)              | [TagCreate.py](./python/TagCreate.py)              |
+| TagList          | [TagList.sh](./script/linux/TagList.sh)                   | [TagList.bat](./script/windows/TagList.bat)                   | [TagList.js](./nodejs/TagList.js)                  | [TagList.py](./python/TagList.py)                  |
+| TagView          | [TagView.sh](./script/linux/TagView.sh)                   | [TagView.bat](./script/windows/TagView.bat)                   | [TagView.js](./nodejs/TagView.js)                  | [TagView.py](./python/TagView.py)                  |
+| TagStat          | [TagStat.sh](./script/linux/TagStat.sh)                   | [TagStat.bat](./script/windows/TagStat.bat)                   | [TagStat.js](./nodejs/TagStat.js)                  | [TagStat.py](./python/TagStat.py)                  |
+| TagUpdate        | [TagUpdate.sh](./script/linux/TagUpdate.sh)               | [TagUpdate.bat](./script/windows/TagUpdate.bat)               | [TagUpdate.js](./nodejs/TagUpdate.js)              | [TagUpdate.py](./python/TagUpdate.py)              |
+| InsertStandard   | [InsertStandard.sh](./script/linux/InsertStandard.sh)     | [InsertStandard.bat](./script/windows/InsertStandard.bat)     | [InsertStandard.js](./nodejs/InsertStandard.js)    | [InsertStandard.py](./python/InsertStandard.py)    |
+| InsertBulk       | [InsertBulk.sh](./script/linux/InsertBulk.sh)             | [InsertBulk.bat](./script/windows/InsertBulk.bat)             | [InsertBulk.js](./nodejs/InsertBulk.js)            | [InsertBulk.py](./python/InsertBulk.py)            |
+| SelectRaw        | [SelectRaw.sh](./script/linux/SelectRaw.sh)               | [SelectRaw.bat](./script/windows/SelectRaw.bat)               | [SelectRaw.js](./nodejs/SelectRaw.js)              | [SelectRaw.py](./python/SelectRaw.py)              |
+| SelectCalculated | [SelectCalculated.sh](./script/linux/SelectCalculated.sh) | [SelectCalculated.bat](./script/windows/SelectCalculated.bat) | [SelectCalculated.js](./nodejs/SelectCalculated.js)| [SelectCalculated.py](./python/SelectCalculated.py)|
+| SelectPivoted    | [SelectPivoted.sh](./script/linux/SelectPivoted.sh)       | [SelectPivoted.bat](./script/windows/SelectPivoted.bat)       | [SelectPivoted.js](./nodejs/SelectPivoted.js)      | [SelectPivoted.py](./python/SelectPivoted.py)      |
+| SelectCurrent    | [SelectCurrent.sh](./script/linux/SelectCurrent.sh)       | [SelectCurrent.bat](./script/windows/SelectCurrent.bat)       | [SelectCurrent.js](./nodejs/SelectCurrent.js)      | [SelectCurrent.py](./python/SelectCurrent.py)      |
+| SelectTimeRange  | [SelectTimeRange.sh](./script/linux/SelectTimeRange.sh)   | [SelectTimeRange.bat](./script/windows/SelectTimeRange.bat)   | [SelectTimeRange.js](./nodejs/SelectTimeRange.js)  | [SelectTimeRange.py](./python/SelectTimeRange.py)  |
+| DeleteSingle     | [DeleteSingle.sh](./script/linux/DeleteSingle.sh)         | [DeleteSingle.bat](./script/windows/DeleteSingle.bat)         | [DeleteSingle.js](./nodejs/DeleteSingle.js)        | [DeleteSingle.py](./python/DeleteSingle.py)        |
+| DeleteAll        | [DeleteAll.sh](./script/linux/DeleteAll.sh)               | [DeleteAll.bat](./script/windows/DeleteAll.bat)               | [DeleteAll.js](./nodejs/DeleteAll.js)              | [DeleteAll.py](./python/DeleteAll.py)              |
+| DeleteCalculated | [DeleteCalculated.sh](./script/linux/DeleteCalculated.sh) | [DeleteCalculated.bat](./script/windows/DeleteCalculated.bat) | [DeleteCalculated.js](./nodejs/DeleteCalculated.js)| [DeleteCalculated.py](./python/DeleteCalculated.py)|
