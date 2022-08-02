@@ -1,13 +1,14 @@
 # Text Encoding to UTF-8 in CMD
 # Example For Select Calculated Data for tag API by using curl in ubuntu
-# written by yeony kim
 
-API_KEY=
+LAKE_ID=$YOUR_LAKE_ID
+API_KEY=$YOUR_API_KEY
+CLOUD_VENDOR=$YOUR_CLOUD_VENDOR
+CLOUD_REGION=$YOUR_CLOUD_REGION
 
 CONTENT_HEADER=Content-Type:application/json
 API_HEADER=x-api-key:$API_KEY
-LAKE_ID=YOUR_LAKE_ID
-URL="https://$LAKE_ID.machlake.com/lakes/values/calculated"
+URL=https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/lakes/${LAKE_ID}/values/calculated
 
 # ------------------------------------------------------------------------------------------------- #
 

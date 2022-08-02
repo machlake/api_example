@@ -1,7 +1,5 @@
 # Text Encoding to UTF-8 in CMD
 # Example For Get Tag List API by using curl in ubuntu
-# written by yeony kim
-# sensor1, sensor2 is applied in lake
 
 LAKE_ID=$YOUR_LAKE_ID
 API_KEY=$YOUR_API_KEY
