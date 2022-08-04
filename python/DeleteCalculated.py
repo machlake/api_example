@@ -8,7 +8,10 @@ import requests
 
 API_KEY = "YOUR_API_TOKEN"
 LAKE_ID = "YOUR_LAKE_ID"
-URL = f"https://{LAKE_ID}.machlake.com/lakes/values/calculated"
+CLOUD_VENDOR="CLOUD_VENDOR"
+CLOUD_REGION="CLOUD_REGION"
+
+URL = f"https://{CLOUD_VENDOR}.{CLOUD_REGION}.machlake.com/lakes/{LAKE_ID}/values/calculated"
 
 headers = {
     'Content-Type': 'application/json',
@@ -21,7 +24,7 @@ params = {
     'base_time': "2021-01-06 18:00:00 000:000:000"
 }
 
-response = requests.delete(URL, headers=headers,  json=params, verify=False)
+response = requests.delete(URL, headers=headers, json=params, verify=False)
 print(response.content.decode('utf-8'))  # {"data":{},"status":"success"}
 
 
@@ -31,7 +34,7 @@ params = {
     'base_time': '1609930800'
 }
 
-response = requests.delete(URL, headers=headers,  json=params, verify=False)
+response = requests.delete(URL, headers=headers, json=params, verify=False)
 print(response.content.decode('utf-8'))  # {"data":{},"status":"success"}
 
 

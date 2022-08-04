@@ -8,7 +8,10 @@ import requests
 
 API_KEY = "YOUT_API_TOKEN"
 LAKE_ID = "YOUR_LAKE_ID"
-URL = f"https://{LAKE_ID}.machlake.com/lakes/values/time_range"
+CLOUD_VENDOR="CLOUD_VENDOR"
+CLOUD_REGION="CLOUD_REGION"
+
+URL = f"https://{CLOUD_VENDOR}.{CLOUD_REGION}.machlake.com/lakes/{LAKE_ID}/values/time_range"
 
 headers = {
     'Content-Type': 'application/json',
