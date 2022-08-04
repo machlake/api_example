@@ -8,7 +8,10 @@ import requests
 
 API_KEY = "YOUR_API_TOKEN"
 LAKE_ID = "YOUR_LAKE_ID"
-URL = f"https://{LAKE_ID}.machlake.com/lakes/values/raw"
+CLOUD_VENDOR="CLOUD_VENDOR"
+CLOUD_REGION="CLOUD_REGION"
+
+URL = f"https://{CLOUD_VENDOR}.{CLOUD_REGION}.machlake.com/lakes/{LAKE_ID}/values/raw"
 
 headers = {
     'Content-Type': 'application/json',
@@ -20,6 +23,6 @@ headers = {
 params = {
 }
 
-response = requests.delete(URL, headers=headers,  json=params, verify=False)
+response = requests.delete(URL, headers=headers, json=params, verify=False)
 print(response.content.decode('utf-8'))  # {"data":{},"status":"success"}
 

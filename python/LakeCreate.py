@@ -16,13 +16,12 @@ headers = {
 }
 
 params = {
-    'lake_id': "",
     'lake_info': {
         'lake_name': "sample_lake",
         'lake_plan': "basic",
         'owner': "YOUR_MACHLAKE_ID",
-        'region': "ap-northeast-2",
-        'timezone': "Asia/Seoul",
+        'region': "YOUR_REGION",
+        'timezone': "YOUR_TIMEZONE",
         'storage_size': 20
     },
     'tag_schema': [
