@@ -2,43 +2,22 @@
 // written by yeony kim
 // sensor1, sensor2 is applied in lake
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED ="0";
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED ="0";
 
-const express = require('express');
-const app = express();
 const API_KEY ="YOUR_API_TOKEN";
-const LAKE_ID ="YOUR_LAKE_ID"
-const URL ="https://" + LAKE_ID +".machlake.com/lakes/values/raw";
+const LAKE_ID ="YOUR_LAKE_ID";
+const CLOUD_VENDOR="CLOUD_VENDOR";
+const CLOUD_REGION="CLOUD_REGION";
+
+var request = require('request');
 
 // CASE - Delete All Data
-
-app.get(
-    '/delete_all_data', function(req, res) {
-        var request = require('request');
-
-        const Data = {
-        }
-        
-        var option = {
-            url: URL,
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': API_KEY
-            },
-            body: JSON.stringify(Data)
-        };
-        request.delete( option, function(error, response, body) {
-            if (!error) {
-                res.writeHead(200);
-                res.end(body);
-                console.log(body) // {"data":{},"status":"success"}
-            } else {
-                console.log(error)
-            }
-        })
-    }
-)
-
-app.listen(8888, function() {
-    console.log('http://127.0.0.1:8888/delete_all_data is result for delete all data')
-})
+request.delete({
+    url: `https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/lakes/${LAKE_ID}/values/raw`, 
+    headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': API_KEY
+    }}, 
+    function(error, response, body) {
+        console.log(body)
+    })
