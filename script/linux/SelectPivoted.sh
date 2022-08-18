@@ -5,7 +5,6 @@ LAKE_ID=$YOUR_LAKE_ID
 API_KEY=$YOUR_API_KEY
 CLOUD_VENDOR=$YOUR_CLOUD_VENDOR
 CLOUD_REGION=$YOUR_CLOUD_REGION
-TAG_NAME=$YOUR_TAG_NAME
 
 CONTENT_HEADER=Content-Type:application/json
 API_HEADER=x-api-key:$API_KEY
@@ -29,6 +28,10 @@ curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER --data-urlencode "tag_name=$TA
 
 # CASE - Pivoted DATA GET with another value form
 VALUE_RETURN_FORM=1
+TAG_NAME=sensor1,sensor2
+DATE_FORMAT="YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn"
+START_TIME="2021-01-06 17:00:00 000:000:000"
+END_TIME="2021-01-06 21:00:00 000:000:000"
 CALC_MODE=cnt
 
 curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER --data-urlencode "tag_name=$TAG_NAME" --data-urlencode "calc_mode=$CALC_MODE" --data-urlencode "start_time=$START_TIME" --data-urlencode "end_time=$END_TIME" --data-urlencode "date_format=$DATE_FORMAT" --data-urlencode "value_return_form=$VALUE_RETURN_FORM"

@@ -4,16 +4,15 @@ chcp 65001
 :: written by yeony kim
 :: sensor1, sensor2 is applied in lake
 
-set API_KEY=
-set LAKE_ID=
-set API_KEY=
-set CLOUD_VENDOR=
-set CLOUD_REGION=
-set TAG_NAME=
+set API_KEY=YOUR_API_KEY
+set LAKE_ID=YOUR_LAKE_ID
+set CLOUD_VENDOR=YOUR_CLOUD_VENDOR
+set CLOUD_REGION=YOUR_CLOUD_REGION
+set TAG_NAME=YOUR_TAG_NAME
 
 set CONTENT_HEADER="Content-Type: application/json"
 set API_HEADER="x-api-key: %API_KEY%"
-set URL=https://%CLOUD_VENDOR%.%CLOUD_REGION%.machlake.com/lakes/%LAKE_ID%/values/stat
+set URL="https://%CLOUD_VENDOR%.%CLOUD_REGION%.machlake.com/lakes/%LAKE_ID%/values/stat"
 
 :: ------------------------------------------------------------------------------------------------- ::
 

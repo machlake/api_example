@@ -1,6 +1,8 @@
 # Text Encoding to UTF-8 in CMD
 # Example For Get Lake List API by using curl in shell script
 
+API_KEY=$YOUR_API_KEY
+
 CONTENT_HEADER="Content-Type:application/json"
 API_HEADER="x-api-key:$API_KEY"
 

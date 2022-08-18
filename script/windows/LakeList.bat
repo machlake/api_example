@@ -3,12 +3,12 @@ chcp 65001
 :: Example For Get Lake List API by using curl in window script
 :: written by yeony kim
 
-set API_KEY=
+set API_KEY=YOUR_API_KEY
 
 set CONTENT_HEADER="Content-Type: application/json"
 set API_HEADER="x-api-key: %API_KEY%"
 
-set URL=https://api.machlake.com/lakes
+set URL="https://api.machlake.com/lakes"
 
 :: ------------------------------------------------------------------------------------------------- ::
 
