@@ -8,7 +8,7 @@ CLOUD_REGION=$YOUR_CLOUD_REGION
 
 CONTENT_HEADER=Content-Type:application/json
 API_HEADER=x-api-key:$API_KEY
-URL=https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/lakes/${LAKE_ID}/values/bulk
+URL=https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/v1/lakes/${LAKE_ID}/values
 
 # ------------------------------------------------------------------------------------------------- #
 
@@ -20,7 +20,7 @@ VALUES="[[\"sensor1\", \"2021-01-06 18:00:00 001:000:000\", 2.0], [\"sensor1\", 
 curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER  -d "{\"date_format\": $DATE_FORMAT, \"values\": $VALUES}"
 
 # Return Format
-# {"data":{"fail":0,"success":6},"status":"success"}
+# {"success": true,"reason": "append success","data": {"fail": 0,"success": 6}}
 
 # ------------------------------------------------------------------------------------------------- #
 
@@ -31,6 +31,6 @@ VALUES="[[\"sensor1\", 1609930804000000000, 2.0], [\"sensor1\", 1609930805000000
 curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER  -d "{\"values\": $VALUES}"
 
 # Return Format
-# {"data":{"fail":0,"success":6},"status":"success"}
+# {"success": true,"reason": "append success","data": {"fail": 0,"success": 6}}
 
 # ------------------------------------------------------------------------------------------------- #

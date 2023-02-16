@@ -11,10 +11,36 @@ URL=https://api.machlake.com/lakes
 # ------------------------------------------------------------------------------------------------- #
 
 # CASE - create LAKE
+# {
+#     "lake_info":{
+#         "lake_name":"sample_lake",
+#         "lake_plan":"basic",
+#         "region":"aws1.kor",
+#         "timezone":"Asia/Seoul",
+#         "storage_size":20}
+#     ,
+#     "tag_schema":[
+#         {
+#             "col_name":"name",
+#             "col_type":"varchar",
+#             "col_length":40
+#         }
+#     ],
+#     "value_schema":[
+#         {
+#             "col_name":"time",
+#             "col_type":"datetime"
+#         },
+#         {
+#             "col_name":"value",
+#             "col_type":"double"
+#         }
+#     ]
+# }
 
-curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER --data "{\"lake_info\":{\"lake_name\":\"sample_lake\",\"lake_plan\":\"basic\",\"owner\":\"YOUR_MACHLAKE_ID\",\"region\":\"ap-northeast-2\",\"timezone\":\"Asia/Seoul\",\"storage_size\":20},\"tag_schema\":[{\"col_name\":\"name\",\"col_type\":\"varchar\",\"col_length\":40}],\"value_schema\":[{\"col_name\":\"time\",\"col_type\":\"datetime\"},{\"col_name\":\"value\",\"col_type\":\"double\"}]}"
+curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER --data "{\"lake_info\":{\"lake_name\":\"sample_lake\",\"lake_plan\":\"basic\",\"region\":\"aws1.kor\",\"timezone\":\"Asia/Seoul\",\"storage_size\":20},\"tag_schema\":[{\"col_name\":\"name\",\"col_type\":\"varchar\",\"col_length\":40}],\"value_schema\":[{\"col_name\":\"time\",\"col_type\":\"datetime\"},{\"col_name\":\"value\",\"col_type\":\"double\"}]}"
 
 # Return Format
-# {"data":"YOUR_LAKE_ID","status":"success"}
+# {"success": true,"reason": "create lake start","data": "{lake id}"}
 
 # ------------------------------------------------------------------------------------------------- #

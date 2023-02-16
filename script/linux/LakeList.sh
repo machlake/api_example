@@ -6,7 +6,7 @@ API_KEY=$YOUR_API_KEY
 CONTENT_HEADER="Content-Type:application/json"
 API_HEADER="x-api-key:$API_KEY"
 
-URL=https://api.machlake.com/lakes
+URL=https://api.machlake.com/v1/lakes
 
 # ------------------------------------------------------------------------------------------------- #
 
@@ -15,4 +15,19 @@ URL=https://api.machlake.com/lakes
 curl -k -X GET $URL -H $CONTENT_HEADER -H $API_HEADER
 
 # Return Format
-# {"data":{"lake":[{"lake_id":"YOUR_LAKE_ID","lake_info":{"lake_name":"sample_lake","lake_plan":"basic","region":"ap-northeast-2","timezone":"Asia/Seoul"}}],"mount":[],"share":[]},"status":"success"}
+# {
+#     "success" : true,
+#     "reason"  : "get list success",
+#     "data": [
+#         {
+#             "lake_id" : "{lake_id}",
+#             "lake_info" : {
+#                 "lake_name"    : "sample_lake",
+#                 "lake_plan"    : "basic",
+#                 "region"       : "aws1.kor",
+#                 "timezone"     : "Asia/Seoul"
+#             }
+#         },
+#         ......
+#     ]
+# }
