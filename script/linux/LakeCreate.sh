@@ -6,7 +6,7 @@ API_KEY=$YOUR_API_KEY
 CONTENT_HEADER=Content-Type:application/json
 API_HEADER=x-api-key:$API_KEY
 
-URL=https://api.machlake.com/lakes
+URL=https://api.machlake.com/v1/lakes
 
 # ------------------------------------------------------------------------------------------------- #
 
