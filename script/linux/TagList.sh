@@ -8,55 +8,77 @@ CLOUD_REGION=$YOUR_CLOUD_REGION
 
 CONTENT_HEADER=Content-Type:application/json
 API_HEADER=x-api-key:$API_KEY
-URL=https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/lakes/${LAKE_ID}/tags
+URL=https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/v1/lakes/${LAKE_ID}/tags
 
 # ------------------------------------------------------------------------------------------------- #
 
-# CASE - Select Tag
+# CASE - Select Tag with limit
+ROW_LIMIT=3
 
-TAG_NAME=sensor
-QUERY_LIMIT=
-QUERY_OFFSET=
-
-
-curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER --data-urlencode "name=$TAG_NAME" --data-urlencode "limit=$QUERY_LIMIT" --data-urlencode "offset=$QUERY_OFFSET"
-
-# Return Format / Example For 
-# {"data":{"tag":[{"name":"sensor1"},{"name":"sensor2"}]},"status":"success"}
-
-# ------------------------------------------------------------------------------------------------- #
-
-# CASE - Select Tag with SQL Limit
-
-QUERY_LIMIT=1
-QUERY_OFFSET=
-
-curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER --data-urlencode "name=$TAG_NAME" --data-urlencode "limit=$QUERY_LIMIT" --data-urlencode "offset=$QUERY_OFFSET"
+curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "limit=$ROW_LIMIT"
 
 # Return Format
-# {"data":{"tag":[{"name":"sensor1"}]},"status":"success"}
+# {
+#     "success": true,
+#     "reason": "get tag meta list success",
+#     "data":{
+#         "tag":[
+#             {"name":"sensor1"},
+#             {"name":"sensor2"},
+#             {"name":"door1"}
+#         ]
+#     }
+# }
 
 # ------------------------------------------------------------------------------------------------- #
 
-# CASE - Select Tag with SQL Limit and SQL Offset
+# CASE - Select Tag with Limit and Offset
 
-QUERY_LIMIT=1
-QUERY_OFFSET=1
+ROW_LIMIT=1
+ROW_OFFSET=1
 
-curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER --data-urlencode "name=$TAG_NAME" --data-urlencode "limit=$QUERY_LIMIT" --data-urlencode "offset=$QUERY_OFFSET"
+curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "limit=$ROW_LIMIT" \
+    --data-urlencode "offset=$ROW_OFFSET"
 
 # Return Format
-# {"data":{"tag":[{"name":"sensor2"}]},"status":"success"}
+# {
+#     "success": true,
+#     "reason": "get tag meta list success",
+#     "data":{
+#         "tag":[
+#             {"name":"sensor2"}
+#         ]
+#     }
+# }
+
+# ------------------------------------------------------------------------------------------------- #
+
+# CASE - Select Tag with name hint
+
+TAG_NAME=door
+
+curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "name=$TAG_NAME"
+
+# Return Format
+# {"data":{"tag":[{"name":"door1"}]},"status":"success"}
 
 # ------------------------------------------------------------------------------------------------- #
 
 # CASE - Select Tag about not exist
 
-TAG_NAME=OTHER_NAME
-QUERY_LIMIT=
-QUERY_OFFSET=
+TAG_NAME=wrong_name
 
-curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER --data-urlencode "name=$TAG_NAME" --data-urlencode "limit=$QUERY_LIMIT" --data-urlencode "offset=$QUERY_OFFSET"
+curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "name=$TAG_NAME"
 
 # Return Format
-# {"data":{"tag":[]},"status":"success"}
+# {
+#     "success": true,
+#     "reason": "get tag meta list success",
+#     "data": {
+#         "tag": []
+#     }
+# }

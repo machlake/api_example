@@ -22,7 +22,10 @@ SELECT_TYPE=current
 TAG_NAME=sensor1,sensor2
 DATE_FORMAT="YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn"
 
-curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER --data-urlencode "type=$SELECT_TYPE" --data-urlencode "tag_name=$TAG_NAME" --data-urlencode "date_format=$DATE_FORMAT"
+curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "type=$SELECT_TYPE" \
+    --data-urlencode "tag_name=$TAG_NAME" \
+    --data-urlencode "date_format=$DATE_FORMAT"
 
 # Return Format
 # {

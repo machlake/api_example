@@ -10,7 +10,6 @@ CONTENT_HEADER=Content-Type:application/json
 API_HEADER=x-api-key:$API_KEY
 URL=https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/v1/lakes/${LAKE_ID}/values
 
-# parameters
 SELECT_TYPE=raw
 
 # ------------------------------------------------------------------------------------------------- #
@@ -21,17 +20,17 @@ DATE_FORMAT="YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn"
 START_TIME="2021-01-06 17:00:00 000:000:000"
 END_TIME="2021-01-06 21:00:00 000:000:000"
 
-curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER 
-    --data-urlencode "type=$SELECT_TYPE" 
-    --data-urlencode "tag_name=$TAG_NAME" 
-    --data-urlencode "date_format=$DATE_FORMAT" 
-    --data-urlencode "start_time=$START_TIME" 
+curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "type=$SELECT_TYPE" \
+    --data-urlencode "tag_name=$TAG_NAME" \
+    --data-urlencode "date_format=$DATE_FORMAT" \
+    --data-urlencode "start_time=$START_TIME" \
     --data-urlencode "end_time=$END_TIME"
 
 # Return Format
 # {
-#     "success": true,
-#     "reason": "success",
+#     "success":true,
+#     "reason":"success",
 #     "data":{
 #         "columns":[
 #             {"name":"NAME","type":5,"length":80},
@@ -63,17 +62,17 @@ DATE_FORMAT="YYYY-MM-DD HH24:MI:SS"
 START_TIME="2021-01-06 17:00:00"
 END_TIME="2021-01-06 21:00:00"
 
-curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER 
-    --data-urlencode "type=$SELECT_TYPE" 
-    --data-urlencode "tag_name=$TAG_NAME" 
-    --data-urlencode "date_format=$DATE_FORMAT" 
-    --data-urlencode "start_time=$START_TIME" 
+curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "type=$SELECT_TYPE" \
+    --data-urlencode "tag_name=$TAG_NAME" \
+    --data-urlencode "date_format=$DATE_FORMAT" \
+    --data-urlencode "start_time=$START_TIME" \
     --data-urlencode "end_time=$END_TIME"
 
 # Return Format
 # {
-#     "success": true,
-#     "reason": "success",
+#     "success":true,
+#     "reason":"success",
 #     "data":{
 #         "columns":[
 #             {"name":"NAME","type":5,"length":80},
@@ -105,16 +104,16 @@ DATE_FORMAT="YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn"
 START_TIME="2021-01-06 17:00:00 000:000:000"
 END_TIME="2021-01-06 21:00:00 000:000:000"
 
-curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER 
-    --data-urlencode "type=$SELECT_TYPE" 
-    --data-urlencode "tag_name=$TAG_NAME" 
-    --data-urlencode "date_format=$DATE_FORMAT" 
-    --data-urlencode "start_time=$START_TIME" 
+curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "type=$SELECT_TYPE" \
+    --data-urlencode "tag_name=$TAG_NAME" \
+    --data-urlencode "date_format=$DATE_FORMAT" \
+    --data-urlencode "start_time=$START_TIME" \
     --data-urlencode "end_time=$END_TIME"
 
 # {
-#     "success": true,
-#     "reason": "success",
+#     "success":true,
+#     "reason":"success",
 #     "data":{
 #         "columns":[
 #             {"name":"NAME","type":5,"length":80},
@@ -147,18 +146,18 @@ DATE_FORMAT="YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn"
 START_TIME="2021-01-06 17:00:00 000:000:000"
 END_TIME="2021-01-06 21:00:00 000:000:000"
 
-curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER 
-    --data-urlencode "type=$SELECT_TYPE" 
-    --data-urlencode "timezone=$TZ" 
-    --data-urlencode "tag_name=$TAG_NAME" 
-    --data-urlencode "date_format=$DATE_FORMAT" 
-    --data-urlencode "start_time=$START_TIME" 
+curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "type=$SELECT_TYPE" \
+    --data-urlencode "timezone=$TZ" \
+    --data-urlencode "tag_name=$TAG_NAME" \
+    --data-urlencode "date_format=$DATE_FORMAT" \
+    --data-urlencode "start_time=$START_TIME" \
     --data-urlencode "end_time=$END_TIME"
 
 
 # {
-#     "success": true,
-#     "reason": "success",
+#     "success":true,
+#     "reason":"success",
 #     "data":{
 #         "columns":[
 #             {"name":"NAME","type":5,"length":80},
@@ -181,17 +180,17 @@ DATE_FORMAT="YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn"
 START_TIME="2021-01-07 02:00:00 000:000:000"
 END_TIME="2021-01-07 12:00:00 000:000:000"
 
-curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER 
-    --data-urlencode "type=$SELECT_TYPE" 
-    --data-urlencode "tag_name=$TAG_NAME" 
-    --data-urlencode "date_format=$DATE_FORMAT" 
-    --data-urlencode "start_time=$START_TIME" 
+curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "type=$SELECT_TYPE" \
+    --data-urlencode "tag_name=$TAG_NAME" \
+    --data-urlencode "date_format=$DATE_FORMAT" \
+    --data-urlencode "start_time=$START_TIME" \
     --data-urlencode "end_time=$END_TIME"
 
 # Return Format
 # {
-#     "success": true,
-#     "reason": "success",
+#     "success":true,
+#     "reason":"success",
 #     "data":{
 #         "columns":[
 #             {"name":"NAME","type":5,"length":80},
@@ -217,20 +216,20 @@ LIMIT=10
 OFFSET=5
 DIRECTION=0
 
-curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER 
-    --data-urlencode "type=$SELECT_TYPE" 
-    --data-urlencode "tag_name=$TAG_NAME" 
-    --data-urlencode "date_format=$DATE_FORMAT" 
-    --data-urlencode "start_time=$START_TIME" 
-    --data-urlencode "end_time=$END_TIME" 
-    --data-urlencode "limit=$LIMIT" 
-    --data-urlencode "offset=$OFFSET" 
+curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "type=$SELECT_TYPE" \
+    --data-urlencode "tag_name=$TAG_NAME" \
+    --data-urlencode "date_format=$DATE_FORMAT" \
+    --data-urlencode "start_time=$START_TIME" \
+    --data-urlencode "end_time=$END_TIME" \
+    --data-urlencode "limit=$LIMIT" \
+    --data-urlencode "offset=$OFFSET" \
     --data-urlencode "direction=$DIRECTION"
 
 # Return Format
 # {
-#     "success": true,
-#     "reason": "success",
+#     "success":true,
+#     "reason":"success",
 #     "data":{
 #         "columns":[
 #             {"name":"NAME","type":5,"length":80},
@@ -261,18 +260,18 @@ START_TIME="2021-01-06 17:00:00 000:000:000"
 END_TIME="2021-01-06 21:00:00 000:000:000"
 DIRECTION=1
 
-curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER 
-    --data-urlencode "type=$SELECT_TYPE" 
-    --data-urlencode "tag_name=$TAG_NAME" 
-    --data-urlencode "date_format=$DATE_FORMAT" 
-    --data-urlencode "start_time=$START_TIME" 
-    --data-urlencode "end_time=$END_TIME" 
+curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "type=$SELECT_TYPE" \
+    --data-urlencode "tag_name=$TAG_NAME" \
+    --data-urlencode "date_format=$DATE_FORMAT" \
+    --data-urlencode "start_time=$START_TIME" \
+    --data-urlencode "end_time=$END_TIME" \
     --data-urlencode "direction=$DIRECTION" 
 
 # Return Format
 # {
-#     "success": true,
-#     "reason": "success",
+#     "success":true,
+#     "reason":"success",
 #     "data":{
 #         "columns":[
 #             {"name":"NAME","type":5,"length":80},

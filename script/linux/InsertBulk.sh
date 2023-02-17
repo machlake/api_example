@@ -20,7 +20,11 @@ VALUES="[[\"sensor1\", \"2021-01-06 18:00:00 001:000:000\", 2.0], [\"sensor1\", 
 curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER  -d "{\"date_format\": $DATE_FORMAT, \"values\": $VALUES}"
 
 # Return Format
-# {"success": true,"reason": "append success","data": {"fail": 0,"success": 6}}
+# {
+#     "success": true,
+#     "reason": "append success",
+#     "data": {"fail": 0,"success": 6}
+# }
 
 # ------------------------------------------------------------------------------------------------- #
 
@@ -31,6 +35,10 @@ VALUES="[[\"sensor1\", 1609930804000000000, 2.0], [\"sensor1\", 1609930805000000
 curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER  -d "{\"values\": $VALUES}"
 
 # Return Format
-# {"success": true,"reason": "append success","data": {"fail": 0,"success": 6}}
+# {
+#     "success": true,
+#     "reason": "append success",
+#     "data": {"fail": 0,"success": 6}
+# }
 
 # ------------------------------------------------------------------------------------------------- #

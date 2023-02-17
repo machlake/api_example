@@ -14,36 +14,48 @@ DELETE_TYPE=raw
 
  # -------------------------------------------------------------------------------------------------  #
 
- # CASE - DELETE TAG DATA WITH TIME String
+ # CASE - Delete Tag value with base_time
 
 TAG_NAME=sensor1
-BASE_TIME="\"2021-01-06 18:00:00 000:000:000\""
+BASE_TIME="2021-01-06 18:00:00 000:000:000"
 
-curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER -d "{\"type\": \"$DELETE_TYPE\", \"tag_name\": \"$TAG_NAME\", \"base_time\": $BASE_TIME}"
+curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "type=$DELETE_TYPE"
+    --data-urlencode "tag_name=$TAG_NAME", 
+    --data-urlencode "base_time =$BASE_TIME"
 
- # Return Format / not exist tag name in lake
- # {"success": true, "reason": "delete value success"}
+# Return Format
+# {
+#     "success": true,
+#     "reason": "delete value success"
+# }
 
- # -------------------------------------------------------------------------------------------------  #
+# -------------------------------------------------------------------------------------------------  #
 
- # CASE - DELETE TAG DATA WITH second time stamp
+# CASE - Delete all Tag value
 
-TAG_NAME=sensor2
-BASE_TIME="\"1609930800\""
+curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER
+    --data-urlencode "type=$DELETE_TYPE"
 
-curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER -d "{\"type\": \"$DELETE_TYPE\", \"tag_name\": \"$TAG_NAME\", \"base_time\": $BASE_TIME}"
- # Return Format
- # {"success": true, "reason": "delete value success"}
+# Return Format / not exist tag name in lake
+# {
+#     "success": true,
+#     "reason": "delete value success"
+# }
 
- # -------------------------------------------------------------------------------------------------  #
+# -------------------------------------------------------------------------------------------------  #
 
- # -------------------------------------------------------------------------------------------------  #
+# CASE - Delete Tag value when no exist tag name
 
- # CASE - DELETE All Tag DATA
+TAG_NAME=wrong_name
 
-curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER -d "{\"type\": \"$DELETE_TYPE\"}"
+curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "type=$DELETE_TYPE"
+    --data-urlencode "tag_name=$TAG_NAME", 
 
- # Return Format / not exist tag name in lake
- # {"success": true, "reason": "delete value success"}
-
- # -------------------------------------------------------------------------------------------------  #
+# Return Format
+# status code : 400 Bad Request
+# {
+#     "success": false,
+#     "reason": "Metadata of TAGDATA table is not found. (Key = wrong_name)"
+# }

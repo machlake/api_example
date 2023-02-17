@@ -16,17 +16,16 @@ DELETE_TYPE=calc
 
 # CASE - Delete Calculated Data
 
-BASE_TIME="\"2021-01-06 18:00:00 000:000:000\""
+BASE_TIME="2021-01-06 18:00:00 000:000:000" # or BASE_TIME="1609930800"
 
-curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER -d "{\"type\": \"$DELETE_TYPE\", \"base_time\": $BASE_TIME}"
+curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "type=$DELETE_TYPE" \
+    --data-urlencode "base_time=$BASE_TIME"
 
-# Return Format / not exist tag name in lake
-# {"success": true, "reason": "delete value success"}
-
-BASE_TIME="\"1609930800\""
-
-curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER -d "{\"type\": \"$DELETE_TYPE\", \"base_time\": $BASE_TIME}"
 # Return Format
-# {"success": true, "reason": "delete value success"}
+# {
+#     "success": true,
+#     "reason": "delete value success"
+# }
 
 # ------------------------------------------------------------------------------------------------- #

@@ -20,7 +20,12 @@ DATE_FORMAT="YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn"
 START_TIME="2021-01-06 17:00:00 000:000:000"
 END_TIME="2021-01-06 21:00:00 000:000:000"
 
-curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER --data-urlencode "tag_name=$TAG_NAME" --data-urlencode "calc_mode=$CALC_MODE" --data-urlencode "start_time=$START_TIME" --data-urlencode "end_time=$END_TIME" --data-urlencode "date_format=$DATE_FORMAT"
+curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "tag_name=$TAG_NAME" \
+    --data-urlencode "calc_mode=$CALC_MODE" \
+    --data-urlencode "start_time=$START_TIME" \
+    --data-urlencode "end_time=$END_TIME" \
+    --data-urlencode "date_format=$DATE_FORMAT"
 
 # Return Format
 # {

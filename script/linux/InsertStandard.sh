@@ -20,7 +20,11 @@ VALUES="[[\"2021-01-06 17:00:00 001:000:000\", 1.0], [\"2021-01-06 17:00:00 002:
 curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER  -d "{\"tag_name\": \"$TAG_NAME\", \"date_format\": \"$DATE_FORMAT\", \"values\": $VALUES}"
 
 # Return Format 
-# {"success": true,"reason": "append success","data": {"fail": 0,"success": 3}}
+# {
+#     "success": true,
+#     "reason": "append success",
+#     "data": {"fail": 0,"success": 3}
+# }
 
 # ------------------------------------------------------------------------------------------------- #
 
@@ -33,7 +37,11 @@ VALUES="[[\"2021-01-06 17:00:00 004:000:000\", 1.0], [\"2021-01-06 17:00:00 005:
 curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER  -d "{\"tag_name\": \"$TAG_NAME\", \"date_format\": \"$DATE_FORMAT\", \"values\": $VALUES}"
 
 # Return Format
-# {"success": true,"reason": "append success","data": {"fail": 0,"success": 3}}
+# {
+#     "success": true,
+#     "reason": "append success",
+#     "data": {"fail": 0,"success": 3}
+# }
 
 # ------------------------------------------------------------------------------------------------- #
 
@@ -46,7 +54,11 @@ VALUES="[[\"2021-01-06 8:00:00 007:000:000\", 1.0], [\"2021-01-06 8:00:00 008:00
 curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER -d "{\"timezone\": \"Africa/Abidjan\", \"tag_name\": \"$TAG_NAME\", \"date_format\": \"$DATE_FORMAT\", \"values\": $VALUES}"
 
 # Return Format 
-# {"success": true,"reason": "append success","data": {"fail": 0,"success": 3}}
+# {
+#     "success": true,
+#     "reason": "append success",
+#     "data": {"fail": 0,"success": 3}
+# }
 
 # ------------------------------------------------------------------------------------------------- #
 
@@ -59,7 +71,11 @@ VALUES="[[\"2021-01-06 17:00:00\", 1.0], [\"2021-01-06 17:00:01\", 1.5], [\"2021
 curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER -d "{\"tag_name\": \"$TAG_NAME\", \"date_format\": \"$DATE_FORMAT\", \"values\": $VALUES}"
 
 # Return Format 
-# {"success": true,"reason": "append success","data": {"fail": 0,"success": 3}}
+# {
+#     "success": true,
+#     "reason": "append success",
+#     "data": {"fail": 0,"success": 3}
+# }
 
 # ------------------------------------------------------------------------------------------------- #
 
@@ -70,8 +86,12 @@ VALUES="[[1609920003000000000, 1.0], [1609920004000000000, 1.5], [16099200050000
 
 curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER  -d "{\"tag_name\": \"sensor2\", \"values\": $VALUES}"
 
-# Return Format  / timestamp 사용 예제
-# {"success": true,"reason": "append success","data": {"fail": 0,"success": 3}}
+# Return Format
+# {
+#     "success": true,
+#     "reason": "append success",
+#     "data": {"fail": 0,"success": 3}
+# }
 
 # ------------------------------------------------------------------------------------------------- #
 
@@ -83,7 +103,11 @@ VALUES="[[\"2021-01-06 17:00:00 007:000:000\", 1.0], [\"2021-01-06 17:00:00 008:
 
 curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER -d "{\"timezone\": \"Africa/Abidjan\", \"tag_name\": \"$TAG_NAME\", \"date_format\": \"$DATE_FORMAT\", \"values\": $VALUES}"
 
-# Return Format / Time Zone 사용 (UTC-0)
-# {"success": true,"reason": "append success","data": {"fail": 0,"success": 3}}
+# Return Format
+# {
+#     "success": true,
+#     "reason": "append success",
+#     "data": {"fail": 0,"success": 3}
+# }
 
 # ------------------------------------------------------------------------------------------------- #
