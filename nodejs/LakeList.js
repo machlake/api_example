@@ -4,17 +4,37 @@
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const API_KEY = "YOUR_API_TOKEN";
+const URL = "https://api.machlake.com/v1/lakes";
 
 var request = require('request');
 
+/* ------------------------------------------------------------------------------------------------- */
+
 // CASE - GET LAKE List
+
 request.get({
-    url: "https://api.machlake.com/lakes", 
+    url: URL, 
     headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': API_KEY
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY
     }}, 
     function(error, response, body) {
-        // {"data":{"lake":[{"lake_id":"YOUR_LAKE_ID","lake_info":{"lake_name":"sample_lake","lake_plan":"basic","region":"ap-northeast-2","timezone":"Asia/Seoul"}}],"mount":[],"share":[]},"status":"success"}
-        console.log(body)
+        console.log(body);
+        // Return Format
+        // {
+        //     "success" : true,
+        //     "reason"  : "get list success",
+        //     "data": [
+        //         {
+        //             "lake_id" : "{lake_id}",
+        //             "lake_info" : {
+        //                 "lake_name"    : "sample_lake",
+        //                 "lake_plan"    : "basic",
+        //                 "region"       : "aws1.kor",
+        //                 "timezone"     : "Asia/Seoul"
+        //             }
+        //         },
+        //         ......
+        //     ]
+        // }
     })

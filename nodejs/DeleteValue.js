@@ -4,44 +4,86 @@
 
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED ="0";
 
-const API_KEY ="YOUR_API_TOKEN";
-const LAKE_ID ="YOUR_LAKE_ID";
+const API_KEY="YOUR_API_TOKEN";
+const LAKE_ID="YOUR_LAKE_ID";
 const CLOUD_VENDOR="CLOUD_VENDOR";
 const CLOUD_REGION="CLOUD_REGION";
+const URL=`https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/v1/lakes/${LAKE_ID}/values`
+
+const DELETE_TYPE="raw";
 
 var request = require('request');
 
+/* ------------------------------------------------------------------------------------------------- */
+
 // CASE - DELETE TAG DATA WITH TIME String
-var Data = {
-    tag_name: 'sensor1',
-    base_time: "2021-01-06 18:00:00 000:000:000"
-}
-request.delete({
-    url: `https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/lakes/${LAKE_ID}/values/raw`, 
-    headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': API_KEY
-    },
-    body: JSON.stringify(Data)
-    }, 
-    function(error, response, body) {
-        console.log(body)
-    })
+var tag_name="sensor1";
+var base_time= "2021-01-06 18:00:00 000:000:000";
 
-
-// CASE - DELETE TAG DATA WITH second time stamp
-var Data = {
-    tag_name: 'sensor2',
-    base_time: "1609930800"
-}
 request.delete({
-    url: `https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/lakes/${LAKE_ID}/values/raw`, 
-    headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': API_KEY
+    url: URL, 
+    qs: {
+        type: DELETE_TYPE,
+        tag_name: tag_name,
+        base_time: base_time
     },
-    body: JSON.stringify(Data)
-    }, 
+    headers: {
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY
+    }}, 
     function(error, response, body) {
-        console.log(body)
-    })
+        console.log(body);
+        // Return Format
+        // {
+        //     "success": true,
+        //     "reason": "delete value success"
+        // }
+    });
+
+/* ------------------------------------------------------------------------------------------------- */
+
+// CASE - Delete all Tag value
+
+request.delete({
+    url: URL, 
+    qs: {
+        type: DELETE_TYPE
+    }, 
+    headers: {
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY
+    }}, 
+    function(error, response, body) {
+        console.log(body);
+        // Return Format
+        // {
+        //     "success": true,
+        //     "reason": "delete value success"
+        // }
+    });
+
+/* ------------------------------------------------------------------------------------------------- */
+
+// CASE - Delete Tag value when no exist tag name
+
+var tag_name="wrong_name";
+
+request.delete({
+    url: URL, 
+    qs: {
+        type: DELETE_TYPE,
+        tag_name: tag_name
+    },
+    headers: {
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY
+    }}, 
+    function(error, response, body) {
+        console.log(response);
+        console.log(body);
+        // status code : 400 Bad Request
+        // {
+        //     "success": false,
+        //     "reason": "Metadata of TAGDATA table is not found. (Key = wrong_name)"
+        // }
+    });

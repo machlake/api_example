@@ -9,37 +9,26 @@ const LAKE_ID ="YOUR_LAKE_ID";
 const CLOUD_VENDOR="CLOUD_VENDOR";
 const CLOUD_REGION="CLOUD_REGION";
 
+const DELETE_TYPE = "calc";
+
 var request = require('request');
 
+/* ------------------------------------------------------------------------------------------------- */
+
 // CASE - Delete Calculated Data
-var Data = {
-    base_time: "2021-01-06 18:00:00 000:000:000"
-}
-request.delete({
-    url: `https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/lakes/${LAKE_ID}/values/calculated`, 
-    headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': API_KEY
-    },
-    body: JSON.stringify(Data)
-    }, 
-    function(error, response, body) {
-        console.log(body)
-    })
 
+var BASE_TIME="2021-01-06 18:00:00 000:000:000"; // or BASE_TIME="1609930800"
 
-// CASE - Delete Calculated Data WITH second time stamp
-var Data = {
-    base_time: "1609930800"
-}
 request.delete({
-    url: `https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/lakes/${LAKE_ID}/values/calculated`, 
-    headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': API_KEY
+    url: `https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/v1/lakes/${LAKE_ID}/values`, 
+    qs: {
+        type: DELETE_TYPE,
+        base_time: BASE_TIME
     },
-    body: JSON.stringify(Data)
-    }, 
+    headers: {
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY
+    }},
     function(error, response, body) {
         console.log(body)
     })

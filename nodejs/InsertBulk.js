@@ -8,38 +8,107 @@ const API_KEY ="YOUR_API_TOKEN";
 const LAKE_ID ="YOUR_LAKE_ID";
 const CLOUD_VENDOR="CLOUD_VENDOR";
 const CLOUD_REGION="CLOUD_REGION";
+const URL=`https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/v1/lakes/${LAKE_ID}/values`;
 
 var request = require('request');
 
-// CASE - Insert Bulk Data with nano date time string format
-var Data = {
-    date_format: 'YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn',
-    values: [["sensor1","2021-01-06 18:00:00 001:000:000", 2.0], ["sensor1","2021-01-06 18:00:00 002:000:000", 2.5], ["sensor1","2021-01-06 18:00:00 003:000:000", 2.0], ["sensor2","2021-01-06 18:00:00 001:000:000", 2.0], ["sensor2","2021-01-06 18:00:00 002:000:000", 2.5], ["sensor2","2021-01-06 18:00:00 003:000:000", 2.0]]
-}
-request.post({
-    url: `https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/lakes/${LAKE_ID}/values/bulk`, 
-    headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': API_KEY
-    },
-    body: JSON.stringify(Data)
-    }, 
-    function(error, response, body) {
-        console.log(body)
-    })
+/* ------------------------------------------------------------------------------------------------- */
 
-// CASE - Insert Bulk Data with nano date time string format
+// CASE - Insert Data with nano date time string format
+
 var Data = {
-    values: [["sensor1", 1609930804000000000, 2.0], ["sensor1", 1609930805000000000, 2.5], ["sensor1", 1609930806000000000, 2.0], ["sensor2", 1609930804000000000, 2.0], ["sensor2", 1609930805000000000, 2.5], ["sensor2", 1609930806000000000, 2.0]]
+    date_format: "YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn",
+    values: [
+        ["sensor1","2021-01-06 18:00:00 001:000:000", 2.0], 
+        ["sensor1","2021-01-06 18:00:00 002:000:000", 2.5], 
+        ["sensor1","2021-01-06 18:00:00 003:000:000", 2.0], 
+        ["sensor2","2021-01-06 18:00:00 001:000:000", 2.0], 
+        ["sensor2","2021-01-06 18:00:00 002:000:000", 2.5], 
+        ["sensor2","2021-01-06 18:00:00 003:000:000", 2.0]
+    ]
 }
+
 request.post({
-    url: `https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/lakes/${LAKE_ID}/values/bulk`, 
+    url: URL, 
     headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': API_KEY
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY
     },
     body: JSON.stringify(Data)
     }, 
     function(error, response, body) {
         console.log(body)
-    })
+        // Return Format
+        // {
+        //     "success": true,
+        //     "reason": "append success",
+        //     "data": {"fail": 0,"success": 6}
+        // }
+    });
+
+/* ------------------------------------------------------------------------------------------------- */
+
+// CASE - Insert Data with nano date time stamp
+
+var Data = {
+    values: [
+        ["sensor1", 1609930804000000000, 2.0], 
+        ["sensor1", 1609930805000000000, 2.5], 
+        ["sensor1", 1609930806000000000, 2.0], 
+        ["sensor2", 1609930804000000000, 2.0], 
+        ["sensor2", 1609930805000000000, 2.5], 
+        ["sensor2", 1609930806000000000, 2.0]
+    ]
+}
+request.post({
+    url: URL, 
+    headers: {
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY
+    },
+    body: JSON.stringify(Data)
+    }, 
+    function(error, response, body) {
+        console.log(body)
+        // Return Format
+        // {
+        //     "success": true,
+        //     "reason": "append success",
+        //     "data": {"fail": 0,"success": 6}
+        // }
+    });
+
+
+/* ------------------------------------------------------------------------------------------------- */
+
+// CASE - Insert Data with UTC-0 timezone
+
+var Data = {
+    timezone: "Africa/Abidjan",
+    values: [
+        ["sensor1","2021-01-06 18:00:00 001:000:000", 2.0], 
+        ["sensor1","2021-01-06 18:00:00 002:000:000", 2.5], 
+        ["sensor1","2021-01-06 18:00:00 003:000:000", 2.0], 
+        ["sensor2","2021-01-06 18:00:00 001:000:000", 2.0], 
+        ["sensor2","2021-01-06 18:00:00 002:000:000", 2.5], 
+        ["sensor2","2021-01-06 18:00:00 003:000:000", 2.0]
+    ]
+}
+
+request.post({
+    url: URL, 
+    headers: {
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY
+    },
+    body: JSON.stringify(Data)
+    }, 
+    function(error, response, body) {
+        console.log(body)
+        // Return Format
+        // {
+        //     "success": true,
+        //     "reason": "append success",
+        //     "data": {"fail": 0,"success": 6}
+        // }
+    });
