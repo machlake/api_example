@@ -10,29 +10,54 @@ set CLOUD_REGION=YOUR_CLOUD_REGION
 
 set CONTENT_HEADER="Content-Type: application/json"
 set API_HEADER="x-api-key: %API_KEY%"
-set URL="https://%CLOUD_VENDOR%.%CLOUD_REGION%.machlake.com/lakes/%LAKE_ID%/values/raw"
+set URL="https://%CLOUD_VENDOR%.%CLOUD_REGION%.machlake.com/v1/lakes/%LAKE_ID%/values"
+
+set DELETE_TYPE=raw
 
 :: ------------------------------------------------------------------------------------------------- ::
 
-:: CASE - DELETE TAG DATA WITH TIME String
+:: CASE - Delete Tag value with base_time
 
 set TAG_NAME=sensor1
 set BASE_TIME=\"2021-01-06 18:00:00 000:000:000\"
 
-curl -k -X DELETE %URL% -H %CONTENT_HEADER% -H %API_HEADER% -d "{\"tag_name\": \"%TAG_NAME%\", \"base_time\": %BASE_TIME%}"
+curl -k -X DELETE %URL% -H %CONTENT_HEADER% -H %API_HEADER% \
+    --data-urlencode "type=%DELETE_TYPE%" \
+    --data-urlencode "tag_name=%TAG_NAME%" \
+    --data-urlencode "base_time =%BASE_TIME%"
+
+:: Return Format
+:: {
+::     "success": true,
+::     "reason": "delete value success"
+:: }
+
+:: ------------------------------------------------------------------------------------------------- ::
+
+:: CASE - Delete all Tag value
+
+curl -k -X DELETE %URL% -H %CONTENT_HEADER% -H %API_HEADER% \
+    --data-urlencode "type=%DELETE_TYPE%"
 
 :: Return Format / not exist tag name in lake
-:: {"data":{},"status":"success"}
+:: {
+::     "success": true,
+::     "reason": "delete value success"
+:: }
 
-:: ------------------------------------------------------------------------------------------------- ::
+:: -------------------------------------------------------------------------------------------------  #
 
-:: CASE - DELETE TAG DATA WITH second time stamp
+:: CASE - Delete Tag value when no exist tag name
 
-set TAG_NAME=sensor2
-set BASE_TIME=\"1609930800\"
+TAG_NAME=wrong_name
 
-curl -k -X DELETE %URL% -H %CONTENT_HEADER% -H %API_HEADER% -d "{\"tag_name\": \"%TAG_NAME%\", \"base_time\": %BASE_TIME%}"
+curl -k -X DELETE %URL% -H %CONTENT_HEADER% -H %API_HEADER% \
+    --data-urlencode "type=%DELETE_TYPE%" \
+    --data-urlencode "tag_name=%TAG_NAME%", 
+
 :: Return Format
-:: {"data":{},"status":"success"}
-
-:: ------------------------------------------------------------------------------------------------- ::
+:: status code : 400 Bad Request
+:: {
+::     "success": false,
+::     "reason": "Metadata of TAGDATA table is not found. (Key = wrong_name)"
+:: }

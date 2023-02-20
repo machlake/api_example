@@ -10,23 +10,25 @@ set CLOUD_REGION=YOUR_CLOUD_REGION
 
 set CONTENT_HEADER="Content-Type: application/json"
 set API_HEADER="x-api-key: %API_KEY%"
-set URL="https://%CLOUD_VENDOR%.%CLOUD_REGION%.machlake.com/lakes/%LAKE_ID%/values/calculated"
+set URL="https://%CLOUD_VENDOR%.%CLOUD_REGION%.machlake.com/v1/lakes/%LAKE_ID%/values"
+
+set DELETE_TYPE=calc
 
 :: ------------------------------------------------------------------------------------------------- ::
 
 :: CASE - Delete Calculated Data
 
+:: or BASE_TIME="1609930800" 
 set BASE_TIME=\"2021-01-06 18:00:00 000:000:000\"
 
-curl -k -X DELETE %URL% -H %CONTENT_HEADER% -H %API_HEADER% -d "{\"base_time\": %BASE_TIME%}"
+curl -k -X DELETE %URL% -H %CONTENT_HEADER% -H %API_HEADER% \
+    --data-urlencode "type=%DELETE_TYPE%" \
+    --data-urlencode "base_time=%BASE_TIME%"
 
-:: Return Format / not exist tag name in lake
-:: {"data":{},"status":"success"}
-
-set BASE_TIME=\"1609930800\"
-
-curl -k -X DELETE %URL% -H %CONTENT_HEADER% -H %API_HEADER% -d "{\"base_time\": %BASE_TIME%}"
 :: Return Format
-:: {"data":{},"status":"success"}
+:: {
+::     "success": true,
+::     "reason": "delete value success"
+:: }
 
 :: ------------------------------------------------------------------------------------------------- ::

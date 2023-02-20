@@ -10,7 +10,7 @@ set CLOUD_REGION=YOUR_CLOUD_REGION
 
 set CONTENT_HEADER="Content-Type: application/json"
 set API_HEADER="x-api-key: %API_KEY%"
-set URL="https://%CLOUD_VENDOR%.%CLOUD_REGION%.machlake.com/lakes/%LAKE_ID%/values/standard"
+set URL="https://%CLOUD_VENDOR%.%CLOUD_REGION%.machlake.com/v1/lakes/%LAKE_ID%/values"
 
 :: ------------------------------------------------------------------------------------------------- ::
 
@@ -23,7 +23,11 @@ set VALUES=[[\"2021-01-06 17:00:00 001:000:000\", 1.0], [\"2021-01-06 17:00:00 0
 curl -k -X POST %URL% -H %CONTENT_HEADER% -H %API_HEADER%  -d "{\"tag_name\": \"%TAG_NAME%\", \"date_format\": %DATE_FORMAT%, \"values\": %VALUES%}"
 
 :: Return Format 
-:: {"data":{"fail":0,"success":3},"status":"success"}
+:: {
+::     "success": true,
+::     "reason": "append success",
+::     "data": {"fail": 0,"success": 3}
+:: }
 
 :: ------------------------------------------------------------------------------------------------- ::
 
@@ -35,8 +39,12 @@ set VALUES=[[\"2021-01-06 17:00:00 004:000:000\", 1.0], [\"2021-01-06 17:00:00 0
 
 curl -k -X POST %URL% -H %CONTENT_HEADER% -H %API_HEADER%  -d "{\"tag_name\": \"%TAG_NAME%\", \"date_format\": %DATE_FORMAT%, \"values\": %VALUES%}"
 
-:: Return Format  / date_format이 맞지 않아도 success 함
-:: {"data":{"fail":0,"success":3},"status":"success"}
+:: Return Format
+:: {
+::     "success": true,
+::     "reason": "append success",
+::     "data": {"fail": 0,"success": 3}
+:: }
 
 :: ------------------------------------------------------------------------------------------------- ::
 
@@ -46,10 +54,15 @@ set TAG_NAME=sensor1
 set DATE_FORMAT=\"\"
 set VALUES=[[\"2021-01-06 8:00:00 007:000:000\", 1.0], [\"2021-01-06 8:00:00 008:000:000\", 1.5], [\"2021-01-06 8:00:00 009:000:000\", 2.0]]
 
-curl -k -X POST %URL% -H "Use-Timezone: Africa/Abidjan" -H %CONTENT_HEADER% -H %API_HEADER%  -d "{\"tag_name\": \"%TAG_NAME%\", \"date_format\": %DATE_FORMAT%, \"values\": %VALUES%}"
+curl -k -X POST %URL% -H %CONTENT_HEADER% -H %API_HEADER%  -d "{\"timezone\": \"Africa/Abidjan\", \"tag_name\": \"%TAG_NAME%\", \"date_format\": %DATE_FORMAT%, \"values\": %VALUES%}"
 
 :: Return Format 
-:: {"data":{"fail":0,"success":3},"status":"success"}
+:: {
+::     "success": true,
+::     "reason": "append success",
+::     "data": {"fail": 0,"success": 3}
+:: }
+
 
 :: ------------------------------------------------------------------------------------------------- ::
 
@@ -62,7 +75,11 @@ set VALUES=[[\"2021-01-06 17:00:00\", 1.0], [\"2021-01-06 17:00:01\", 1.5], [\"2
 curl -k -X POST %URL% -H %CONTENT_HEADER% -H %API_HEADER%  -d "{\"tag_name\": \"%TAG_NAME%\", \"date_format\": %DATE_FORMAT%, \"values\": %VALUES%}"
 
 :: Return Format 
-:: {"data":{"fail":0,"success":3},"status":"success"}
+:: {
+::     "success": true,
+::     "reason": "append success",
+::     "data": {"fail": 0,"success": 3}
+:: }
 
 :: ------------------------------------------------------------------------------------------------- ::
 
@@ -73,8 +90,12 @@ set VALUES=[[1609920003000000000, 1.0], [1609920004000000000, 1.5], [16099200050
 
 curl -k -X POST %URL% -H %CONTENT_HEADER% -H %API_HEADER%  -d "{\"tag_name\": \"sensor2\", \"values\": %VALUES%}"
 
-:: Return Format  / timestamp 사용 예제
-:: {"data":{"fail":0,"success":3},"status":"success"}
+:: Return Format
+:: {
+::     "success": true,
+::     "reason": "append success",
+::     "data": {"fail": 0,"success": 3}
+:: }
 
 :: ------------------------------------------------------------------------------------------------- ::
 
@@ -84,9 +105,11 @@ set TAG_NAME=sensor2
 set DATE_FORMAT=\"YYYY-MM-DD HH24:MI:SS\"
 set VALUES=[[\"2021-01-06 17:00:00 007:000:000\", 1.0], [\"2021-01-06 17:00:00 008:000:000\", 1.5], [\"2021-01-06 17:00:00 009:000:000\", 2.0]]
 
-curl -k -X POST %URL% -H "Use-Timezone: Africa/Abidjan" -H %CONTENT_HEADER% -H %API_HEADER%  -d "{\"tag_name\": \"%TAG_NAME%\", \"date_format\": %DATE_FORMAT%, \"values\": %VALUES%}"
+curl -k -X POST %URL% -H %CONTENT_HEADER% -H %API_HEADER%  -d "{\"timezone\": \"Africa/Abidjan\", \"tag_name\": \"%TAG_NAME%\", \"date_format\": %DATE_FORMAT%, \"values\": %VALUES%}"
 
-:: Return Format / Time Zone 사용 (UTC-0)
-:: {"data":{"fail":0,"success":3},"status":"success"}
-
-:: ------------------------------------------------------------------------------------------------- ::
+:: Return Format
+:: {
+::     "success": true,
+::     "reason": "append success",
+::     "data": {"fail": 0,"success": 3}
+:: }

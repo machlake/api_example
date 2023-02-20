@@ -11,23 +11,37 @@ set CLOUD_REGION=YOUR_CLOUD_REGION
 
 set CONTENT_HEADER="Content-Type: application/json"
 set API_HEADER="x-api-key: %API_KEY%"
-set URL="https://%CLOUD_VENDOR%.%CLOUD_REGION%.machlake.com/lakes/%LAKE_ID%/tag"
+set URL="https://%CLOUD_VENDOR%.%CLOUD_REGION%.machlake.com/v1/lakes/%LAKE_ID%/tag"
 
 :: ------------------------------------------------------------------------------------------------- ::
 
 :: CASE - Get Tag Information
 
-set TAG_NAME=sensor
-
-curl -k -G %URL% -H %CONTENT_HEADER% -H %API_HEADER% --data-urlencode "name=%TAG_NAME%"
-
-:: Return Format / not exist tag name in lake
-:: {"message":"no such name : sensor","status":"error"}
-
 set TAG_NAME=sensor1
 
-curl -k -G %URL% -H %CONTENT_HEADER% -H %API_HEADER% --data-urlencode "name=%TAG_NAME%"
-:: Return Format
-:: {"data":{"name":"sensor1"},"status":"success"}
+curl -k -G %URL% -H %CONTENT_HEADER% -H %API_HEADER% \
+    --data-urlencode "name=%TAG_NAME%"
+
+:: Return Format / not exist tag name in lake
+:: {
+::     "success": true,
+::     "reason": "get tag meta success",
+::     "data": {"name": "sensor01"}
+:: }
+
 
 :: ------------------------------------------------------------------------------------------------- ::
+
+:: CASE - Get Tag Information when no exist tag name
+
+set TAG_NAME=wrong_name
+
+curl -k -G %URL% -H %CONTENT_HEADER% -H %API_HEADER% \
+    --data-urlencode "name=%TAG_NAME%"
+
+:: Return Format
+:: status code : 400 Bad Request
+:: {
+::     "success": false,
+::     "reason": "no such name : wrong_name"
+:: }
