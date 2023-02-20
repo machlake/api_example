@@ -81,7 +81,7 @@ curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER -d "{\"tag\":[[\"sensor01
 #     "tag":[["sensor1"]]
 # }
 
-curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER -d "{\"tag\":[[\"sensor1\"], [\"sensor2\"]]}"
+curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER -d "{\"tag\":[[\"sensor1\"]]}"
 
 # Return Format
 # status code:400 Bad Request

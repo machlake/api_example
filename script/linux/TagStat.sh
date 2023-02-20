@@ -17,6 +17,7 @@ SELECT_TYPE=stat
 # ------------------------------------------------------------------------------------------------- #
 
 # CASE - Select Tag
+
 TAG_NAME=sensor1
 
 curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
@@ -49,6 +50,7 @@ curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
 # ------------------------------------------------------------------------------------------------- #
 
 # CASE - Select Tag with date_format
+
 TAG_NAME=sensor1
 DATE_FORMAT=MS # MILLISECOND
 
@@ -58,26 +60,26 @@ curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
     --data-urlencode "date_format=$DATE_FORMAT"
 
 # Return Format
-{
-    "success": true,
-    "reason": "success",
-    "data": {
-        "columns": [
-            {"name":"NAME","type":5,"length":100},
-            {"name":"ROW_COUNT","type":112,"length":20},
-            {"name":"MIN_VALUE","type":20,"length":17},
-            {"name":"MAX_VALUE","type":20,"length":17},
-            {"name":"MIN_TIME","type":12,"length":20},
-            {"name":"MAX_TIME","type":12,"length":20},
-            {"name":"MIN_VALUE_TIME","type":12,"length":20},
-            {"name":"MAX_VALUE_TIME","type":12,"length":20},
-            {"name":"RECENT_ROW_TIME","type":12,"length":20}
-        ],
-        "rows": [
-            ["sensor1",103277006,0,3999,1675142048271,1676596324000,1675653288184,1675653301116,1676596324000]
-        ]
-    }
-}
+# {
+#     "success": true,
+#     "reason": "success",
+#     "data": {
+#         "columns": [
+#             {"name":"NAME","type":5,"length":100},
+#             {"name":"ROW_COUNT","type":112,"length":20},
+#             {"name":"MIN_VALUE","type":20,"length":17},
+#             {"name":"MAX_VALUE","type":20,"length":17},
+#             {"name":"MIN_TIME","type":12,"length":20},
+#             {"name":"MAX_TIME","type":12,"length":20},
+#             {"name":"MIN_VALUE_TIME","type":12,"length":20},
+#             {"name":"MAX_VALUE_TIME","type":12,"length":20},
+#             {"name":"RECENT_ROW_TIME","type":12,"length":20}
+#         ],
+#         "rows": [
+#             ["sensor1",103277006,0,3999,1675142048271,1676596324000,1675653288184,1675653301116,1676596324000]
+#         ]
+#     }
+# }
 
 
 # ------------------------------------------------------------------------------------------------- #
@@ -87,6 +89,7 @@ curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
 TAG_NAME=OTHER_NAME
 
 curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "type=$SELECT_TYPE"  \
     --data-urlencode "tag_name=$TAG_NAME"
 
 # Return Format

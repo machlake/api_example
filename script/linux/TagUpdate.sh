@@ -52,6 +52,7 @@ curl -k -X PUT $URL -H $CONTENT_HEADER -H $API_HEADER  -d $VALUES
 # ------------------------------------------------------------------------------------------------- #
 
 # CASE - Update Tag when not exist tag
+
 SRC_TAG_NAME=wrong_name
 ADD_COLUMN="4F-101"
 VALUES="{\"name\": \"$SRC_TAG_NAME\", \"columns\": [{\"col_name\": \"location\", \"value\": \"$ADD_COLUMN\"}]}"
@@ -64,5 +65,3 @@ curl -k -X PUT $URL -H $CONTENT_HEADER -H $API_HEADER  -d $VALUES
 #     "success": false,
 #     "reason": "no such name : wrong_name"
 # }
-
-# ------------------------------------------------------------------------------------------------- #

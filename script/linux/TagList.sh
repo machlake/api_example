@@ -13,6 +13,7 @@ URL=https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/v1/lakes/${LAKE_ID}/tag
 # ------------------------------------------------------------------------------------------------- #
 
 # CASE - Select Tag with limit
+
 ROW_LIMIT=3
 
 curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
@@ -63,7 +64,15 @@ curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
     --data-urlencode "name=$TAG_NAME"
 
 # Return Format
-# {"data":{"tag":[{"name":"door1"}]},"status":"success"}
+# {
+#     "success": true,
+#     "reason": "get tag meta list success",
+#     "data":{
+#         "tag":[
+#             {"name":"door1"}
+#         ]
+#     }
+# }
 
 # ------------------------------------------------------------------------------------------------- #
 

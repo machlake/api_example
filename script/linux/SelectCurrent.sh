@@ -11,14 +11,12 @@ CONTENT_HEADER=Content-Type:application/json
 API_HEADER=x-api-key:$API_KEY
 URL=https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/v1/lakes/${LAKE_ID}/values
 
-
+SELECT_TYPE=current
 
 # ------------------------------------------------------------------------------------------------- #
 
 # CASE - Current DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn
 
-# parameters
-SELECT_TYPE=current 
 TAG_NAME=sensor1,sensor2
 DATE_FORMAT="YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn"
 
@@ -43,5 +41,3 @@ curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
 #         ]
 #     }
 # }
-
-# ------------------------------------------------------------------------------------------------- #

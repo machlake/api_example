@@ -17,6 +17,7 @@ URL=https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/v1/lakes/${LAKE_ID}/val
 TAG_NAME=sensor1
 DATE_FORMAT="YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn"
 VALUES="[[\"2021-01-06 17:00:00 001:000:000\", 1.0], [\"2021-01-06 17:00:00 002:000:000\", 1.5], [\"2021-01-06 17:00:00 003:000:000\", 2.0]]"
+
 curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER  -d "{\"tag_name\": \"$TAG_NAME\", \"date_format\": \"$DATE_FORMAT\", \"values\": $VALUES}"
 
 # Return Format 
@@ -109,5 +110,3 @@ curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER -d "{\"timezone\": \"Afri
 #     "reason": "append success",
 #     "data": {"fail": 0,"success": 3}
 # }
-
-# ------------------------------------------------------------------------------------------------- #

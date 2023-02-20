@@ -20,8 +20,8 @@ TAG_NAME=sensor1
 BASE_TIME="2021-01-06 18:00:00 000:000:000"
 
 curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER \
-    --data-urlencode "type=$DELETE_TYPE"
-    --data-urlencode "tag_name=$TAG_NAME", 
+    --data-urlencode "type=$DELETE_TYPE" \
+    --data-urlencode "tag_name=$TAG_NAME" \
     --data-urlencode "base_time =$BASE_TIME"
 
 # Return Format
@@ -34,7 +34,7 @@ curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER \
 
 # CASE - Delete all Tag value
 
-curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER
+curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER \
     --data-urlencode "type=$DELETE_TYPE"
 
 # Return Format / not exist tag name in lake
@@ -50,8 +50,8 @@ curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER
 TAG_NAME=wrong_name
 
 curl -k -X DELETE $URL -H $CONTENT_HEADER -H $API_HEADER \
-    --data-urlencode "type=$DELETE_TYPE"
-    --data-urlencode "tag_name=$TAG_NAME", 
+    --data-urlencode "type=$DELETE_TYPE" \
+    --data-urlencode "tag_name=$TAG_NAME"
 
 # Return Format
 # status code : 400 Bad Request

@@ -10,7 +10,7 @@ CONTENT_HEADER=Content-Type:application/json
 API_HEADER=x-api-key:$API_KEY
 URL=https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/v1/lakes/${LAKE_ID}/values
 
-SELECT_TYPE=calc 
+SELECT_TYPE=calc
 TAG_NAME=sensor1,sensor2
 
 # ------------------------------------------------------------------------------------------------- #
@@ -54,7 +54,7 @@ curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
 #             ["sensor2","2021-01-06 20:00:04 000:000:000",2],
 #             ["sensor1","2021-01-06 20:00:05 000:000:000",2.5],
 #             ["sensor2","2021-01-06 20:00:05 000:000:000",2.5],
-#             ["sensor1","2021-01-06 20:00:06 000:000:000",]
+#             ["sensor1","2021-01-06 20:00:06 000:000:000",2]
 #             ["sensor2","2021-01-06 20:00:06 000:000:000",2]
 #         ]
 #     }
@@ -102,6 +102,7 @@ curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
 #         ]
 #     }
 # }
+
 # ------------------------------------------------------------------------------------------------- #
 
 # CASE - Calculated DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn with calc_mode=min and interval_type=m and interval_value=90
@@ -143,5 +144,3 @@ curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
 #         ]
 #     }
 # }
-
-# ------------------------------------------------------------------------------------------------- #

@@ -8,7 +8,7 @@ CLOUD_REGION=$YOUR_CLOUD_REGION
 
 CONTENT_HEADER=Content-Type:application/json
 API_HEADER=x-api-key:$API_KEY
-URL=https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/lakes/${LAKE_ID}/tags
+URL=https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/v1/lakes/${LAKE_ID}/tags
 
 # ------------------------------------------------------------------------------------------------- #
 
