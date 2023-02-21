@@ -21,6 +21,7 @@ START_TIME="2021-01-06 17:00:00 000:000:000"
 END_TIME="2021-01-06 21:00:00 000:000:000"
 
 curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
+    --data-urlencode "type=$SELECT_TYPE" \
     --data-urlencode "tag_name=$TAG_NAME" \
     --data-urlencode "calc_mode=$CALC_MODE" \
     --data-urlencode "start_time=$START_TIME" \

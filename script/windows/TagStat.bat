@@ -12,7 +12,7 @@ set TAG_NAME=YOUR_TAG_NAME
 
 set CONTENT_HEADER="Content-Type: application/json"
 set API_HEADER="x-api-key: %API_KEY%"
-set URL="https://%CLOUD_VENDOR%.%CLOUD_REGION%.machlake.com/v1/lakes/%LAKE_ID%/values/stat"
+set URL="https://%CLOUD_VENDOR%.%CLOUD_REGION%.machlake.com/v1/lakes/%LAKE_ID%/values"
 
 set SELECT_TYPE=stat
 

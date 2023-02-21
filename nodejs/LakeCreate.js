@@ -1,5 +1,4 @@
 // Example For Create LAKE API by using request in nodejs
-// written by yeony kim
 
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 

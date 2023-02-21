@@ -1,6 +1,4 @@
 // Example For Select Calculated Data for tag API by using request in node js
-// written by yeony kim
-// sensor1, sensor2 is applied in lake
 
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED ="0";
 
@@ -15,6 +13,7 @@ const TAG_NAME = "sensor1,sensor2";
 
 var request = require('request');
 
+
 /* ------------------------------------------------------------------------------------------------- */
 
 // CASE - Calculated DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn with calc_mode=min
@@ -22,7 +21,7 @@ var request = require('request');
 request.get({
     url: URL, 
     qs: {
-        type: SELECT_TYPE,
+        type: SELECT_TYPE, 
         tag_name: TAG_NAME,
         calc_mode: "min",
         date_format: "YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn",

@@ -107,7 +107,7 @@ curl -k -G $URL -H $CONTENT_HEADER -H $API_HEADER \
 
 # CASE - Calculated DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn with calc_mode=min and interval_type=m and interval_value=90
 
-CALC_MODE=cnt
+CALC_MODE=min
 DATE_FORMAT="YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn"
 START_TIME="2021-01-06 17:00:00 000:000:000"
 END_TIME="2021-01-06 21:00:00 000:000:000"
