@@ -11,30 +11,30 @@ LAKE_ID = "YOUR_LAKE_ID"
 CLOUD_VENDOR="CLOUD_VENDOR"
 CLOUD_REGION="CLOUD_REGION"
 
-URL = f"https://{CLOUD_VENDOR}.{CLOUD_REGION}.machlake.com/lakes/{LAKE_ID}/values/calculated"
+URL = f"https://{CLOUD_VENDOR}.{CLOUD_REGION}.machlake.com/v1/lakes/{LAKE_ID}/values"
 
 headers = {
-    'Content-Type': 'application/json',
-    'x-api-key': API_KEY
+    "Content-Type": "application/json",
+    "x-api-key": API_KEY
 }
+
+DELETE_TYPE="calc"
+
+
+# ------------------------------------------------------------------------------------------------- #
 
 # CASE - Delete Calculated Data
 
 params = {
-    'base_time': "2021-01-06 18:00:00 000:000:000"
+    "type": DELETE_TYPE,
+    "base_time": "2021-01-06 18:00:00 000:000:000" # or BASE_TIME="1609930800"
 }
 
-response = requests.delete(URL, headers=headers, json=params, verify=False)
-print(response.content.decode('utf-8'))  # {"data":{},"status":"success"}
+response = requests.delete(URL, headers=headers, params=params, verify=False)
+print(response.content.decode("utf-8"))
 
-
-# CASE - Delete Calculated Data WITH second time stamp
-
-params = {
-    'base_time': '1609930800'
-}
-
-response = requests.delete(URL, headers=headers, json=params, verify=False)
-print(response.content.decode('utf-8'))  # {"data":{},"status":"success"}
-
-
+# Return Format
+# {
+#     "success": true,
+#     "reason": "delete value success"
+# }

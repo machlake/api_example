@@ -12,9 +12,9 @@ URL=https://${CLOUD_VENDOR}.${CLOUD_REGION}.machlake.com/v1/lakes/${LAKE_ID}/val
 
 DELETE_TYPE=raw
 
- # -------------------------------------------------------------------------------------------------  #
+# -------------------------------------------------------------------------------------------------  #
 
- # CASE - Delete Tag value with base_time
+# CASE - Delete Tag value with base_time
 
 TAG_NAME=sensor1
 BASE_TIME="2021-01-06 18:00:00 000:000:000"

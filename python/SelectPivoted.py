@@ -1,7 +1,6 @@
 """
 Example For Select Pivoted Data for tag API by using request in python
 written by yeony kim
-sensor1, sensor2 is applied in lake
 """
 
 import requests
@@ -11,17 +10,23 @@ LAKE_ID = "YOUR_LAKE_ID"
 CLOUD_VENDOR="CLOUD_VENDOR"
 CLOUD_REGION="CLOUD_REGION"
 
-URL = f"https://{CLOUD_VENDOR}.{CLOUD_REGION}.machlake.com/lakes/{LAKE_ID}/values/pivoted"
+URL = f"https://{CLOUD_VENDOR}.{CLOUD_REGION}.machlake.com/v1/lakes/{LAKE_ID}/values"
+
+SELECT_TYPE="pivot"
+TAG_NAME="sensor1,sensor2"
 
 headers = {
     'Content-Type': 'application/json',
     'x-api-key': API_KEY
 }
 
+# ------------------------------------------------------------------------------------------------- #
+
 # CASE - Pivoted DATA GET with date format YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn
 
 params = {
-    'tag_name': 'sensor1',
+    "type": SELECT_TYPE,
+    "tag_name": TAG_NAME,
     'calc_mode': 'min',
     'date_format': 'YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn',
     'start_time': '2021-01-06 17:00:00 000:000:000',
@@ -29,21 +34,29 @@ params = {
 }
 
 response = requests.get(URL, headers=headers,  params=params, verify=False)
-print(response.content.decode('utf-8'))  # {"data":{"calc_mode":"MIN","columns":[{"name":"TIME","type":5,"length":4096},{"name":"sensor1","type":20,"length":17}],"samples":[{"data":[{"TIME":"2021-01-06 17:00:00 000:000:000","sensor1":1},{"TIME":"2021-01-06 18:00:00 000:000:000","sensor1":2},{"TIME":"2021-01-06 20:00:04 000:000:000","sensor1":2},{"TIME":"2021-01-06 20:00:05 000:000:000","sensor1":2.5},{"TIME":"2021-01-06 20:00:06 000:000:000","sensor1":2}]}]},"status":"success"}
+print(response.content.decode('utf-8'))
 
-
-# CASE - Pivoted DATA GET with another value form
-
-params = {
-    'tag_name': 'sensor1,sensor2',
-    'calc_mode': 'cnt',
-    'date_format': 'YYYY-MM-DD HH24:MI:SS mmm:uuu:nnn',
-    'start_time': '2021-01-06 17:00:00 000:000:000',
-    'end_time': '2021-01-06 21:00:00 000:000:000',
-    'value_return_form': 1
-}
-
-response = requests.get(URL, headers=headers,  params=params, verify=False)
-print(response.content.decode('utf-8'))  # {"data":{"calc_mode":"COUNT","columns":[{"name":"TIME","type":5,"length":4096},{"name":"sensor1","type":12,"length":20},{"name":"sensor2","type":12,"length":20}],"samples":[{"data":{"TIME":["2021-01-06 17:00:00 000:000:000","2021-01-06 17:00:01 000:000:000","2021-01-06 17:00:02 000:000:000","2021-01-06 17:00:03 000:000:000","2021-01-06 17:00:04 000:000:000","2021-01-06 17:00:05 000:000:000","2021-01-06 18:00:00 000:000:000","2021-01-06 20:00:04 000:000:000","2021-01-06 20:00:05 000:000:000","2021-01-06 20:00:06 000:000:000"],"sensor1":[9,0,0,0,0,0,3,1,1,1],"sensor2":[1,1,1,1,1,1,3,1,1,1]}}]},"status":"success"}
-
-
+# Return Format
+# {
+#     "success": true,
+#     "reason": "success",
+#     "data":{
+#         "columns":[
+#             {"name":"TIME","type":5,"length":4096},
+#             {"name":"sensor1","type":20,"length":17},
+#             {"name":"sensor2","type":20,"length":17}
+#         ],
+#         "rows":[
+#             ["2021-01-06 17:00:00 000:000:000",1,1],
+#             ["2021-01-06 17:00:01 000:000:000",null,1.5],
+#             ["2021-01-06 17:00:02 000:000:000",null,2],
+#             ["2021-01-06 17:00:03 000:000:000",null,1],
+#             ["2021-01-06 17:00:04 000:000:000",null,1.5],
+#             ["2021-01-06 17:00:05 000:000:000",null,2],
+#             ["2021-01-06 18:00:00 000:000:000",2,2],
+#             ["2021-01-06 20:00:04 000:000:000",2,2],
+#             ["2021-01-06 20:00:05 000:000:000",2.2.5],
+#             ["2021-01-06 20:00:06 000:000:000",2,2]
+#         ]
+#     }
+# }

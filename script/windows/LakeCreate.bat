@@ -66,10 +66,11 @@ curl -k -X POST %URL% -H %CONTENT_HEADER% -H %API_HEADER% -d "{\"lake_info\":{\"
 ::             "col_type":"varchar",
 ::             "col_length":80
 ::         },
+::         {
 ::            "col_name": "location",
 ::            "col_type": "varchar",
 ::            "col_length": 40
-::        }
+::         }
 ::     ],
 ::     "value_schema":[
 ::         {

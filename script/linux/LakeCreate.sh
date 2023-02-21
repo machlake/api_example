@@ -56,18 +56,18 @@ curl -k -X POST $URL -H $CONTENT_HEADER -H $API_HEADER -d "{\"lake_info\":{\"lak
 #         "lake_plan":"basic",
 #         "region":"aws1.kor",
 #         "timezone":"Asia/Seoul",
-#         "storage_size":20}
-#     ,
+#         "storage_size":20},
 #     "tag_schema":[
 #         {
 #             "col_name":"name",
 #             "col_type":"varchar",
 #             "col_length":80
 #         },
+#         {
 #            "col_name": "location",
 #            "col_type": "varchar",
 #            "col_length": 40
-#        }
+#         }
 #     ],
 #     "value_schema":[
 #         {

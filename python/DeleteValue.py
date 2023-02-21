@@ -11,32 +11,67 @@ LAKE_ID = "YOUR_LAKE_ID"
 CLOUD_VENDOR="CLOUD_VENDOR"
 CLOUD_REGION="CLOUD_REGION"
 
-URL = f"https://{CLOUD_VENDOR}.{CLOUD_REGION}.machlake.com/lakes/{LAKE_ID}/values/raw"
+URL = f"https://{CLOUD_VENDOR}.{CLOUD_REGION}.machlake.com/v1/lakes/{LAKE_ID}/values"
 
 headers = {
-    'Content-Type': 'application/json',
-    'x-api-key': API_KEY
+    "Content-Type": "application/json",
+    "x-api-key": API_KEY
 }
 
-# CASE - DELETE TAG DATA WITH TIME String
+DELETE_TYPE="raw"
+
+
+# -------------------------------------------------------------------------------------------------  #
+
+# CASE - Delete Tag value with base_time
 
 params = {
-    'tag_name': 'sensor1',
-    'base_time': "2021-01-06 18:00:00 000:000:000"
+    "type": DELETE_TYPE,
+    "tag_name": "sensor1",
+    "base_time": "2021-01-06 18:00:00 000:000:000"
 }
 
-response = requests.delete(URL, headers=headers,  json=params, verify=False)
-print(response.content.decode('utf-8'))  # {"data":{},"status":"success"}
+response = requests.delete(URL, headers=headers,  params=params, verify=False)
+print(response.content.decode("utf-8"))
 
+# Return Format
+# {
+#     "success": true,
+#     "reason": "delete value success"
+# }
 
-# CASE - DELETE TAG DATA WITH second time stamp
+# -------------------------------------------------------------------------------------------------  #
+
+# CASE - Delete all Tag value
 
 params = {
-    'tag_name': 'sensor2',
-    'base_time': '1609930800'
+    "type": DELETE_TYPE
 }
 
-response = requests.delete(URL, headers=headers,  json=params, verify=False)
-print(response.content.decode('utf-8'))  # {"data":{},"status":"success"}
+response = requests.delete(URL, headers=headers,  params=params, verify=False)
+print(response.content.decode("utf-8"))
 
+# Return Format / not exist tag name in lake
+# {
+#     "success": true,
+#     "reason": "delete value success"
+# }
 
+# -------------------------------------------------------------------------------------------------  #
+
+# CASE - Delete Tag value when no exist tag name
+
+params = {
+    "type": DELETE_TYPE,
+    "tag_name": "wrong_name"
+}
+
+response = requests.delete(URL, headers=headers,  params=params, verify=False)
+print(response.content.decode("utf-8"))
+
+# Return Format
+# status code : 400 Bad Request
+# {
+#     "success": false,
+#     "reason": "Metadata of TAGDATA table is not found. (Key = wrong_name)"
+# }

@@ -11,36 +11,45 @@ LAKE_ID = "YOUR_LAKE_ID"
 CLOUD_VENDOR="CLOUD_VENDOR"
 CLOUD_REGION="CLOUD_REGION"
 
-URL = f"https://{CLOUD_VENDOR}.{CLOUD_REGION}.machlake.com/lakes/{LAKE_ID}/tags"
+URL = f"https://{CLOUD_VENDOR}.{CLOUD_REGION}.machlake.com/v1/lakes/{LAKE_ID}/tags"
 
 headers = {
-    'Content-Type': 'application/json',
-    'x-api-key': API_KEY
+    "Content-Type": "application/json",
+    "x-api-key": API_KEY
 }
+
+
+# ------------------------------------------------------------------------------------------------- #
+
+# CASE - delete tag
+
+params = {
+    "name": "sensor",
+}
+
+response = requests.delete(URL, headers=headers,  params=params, verify=False)
+print(response.content.decode("utf-8"))
+
+# Return Format
+# {
+#     "success":true,
+#     "reason":"delete tag meta success"
+# }
+
+# ------------------------------------------------------------------------------------------------- #
 
 # CASE - delete error when no exist tag name
 
 params = {
-    'name': 'sensor',
+    "name": "wrong_name",
 }
 
-response = requests.delete(URL, headers=headers,  json=params, verify=False)
-print(response.content.decode('utf-8'))  # {"message":"no such name : sensor","status":"error"}
+response = requests.delete(URL, headers=headers,  params=params, verify=False)
+print(response.content.decode("utf-8"))
 
-# CASE - delete tag
-
-params = {
-    'name': 'sensor1',
-}
-
-response = requests.delete(URL, headers=headers,  json=params, verify=False)
-print(response.content.decode('utf-8'))  # {"data":{},"status":"success"}
-
-# CASE - delete tag
-
-params = {
-    'name': 'sensor2',
-}
-
-response = requests.delete(URL, headers=headers,  json=params, verify=False)
-print(response.content.decode('utf-8'))  # {"data":{},"status":"success"}
+# Return Format
+# status code:400 Bad Request
+# {
+#     "success":false,
+#     "reason":"no such name:wrong_name"
+# }
